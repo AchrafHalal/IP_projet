@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap');
+
+/* ── Section ── */
+.hero-section {
+  min-height: 100vh;
+  background: #FAFAFB;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  padding-top: 80px; /* Space for the absolute navbar */
+}
+
+/* Ambient background glow */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, #3b82f622 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #a855f718 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Container: two columns ── */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 48px;
+}
+
+/* ── LEFT column ── */
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 500px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.hero-title {
+  font-family: 'Syne', system-ui, sans-serif;
+  font-size: clamp(34px, 4.5vw, 58px);
+  font-weight: 700;
+  color: #001A46;
+  line-height: 1.1;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.75;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ── Buttons ── */
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  padding: 12px 26px;
+  border-radius: 50px;
+  background: #001A46;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 28px #3b82f644;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px #3b82f655;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  color: #001A46;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-play-icon {
+  font-size: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #001a4618;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Stats ── */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 4px;
+}
+
+.stat-num {
+  font-family: 'Syne', system-ui, sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  color: #001A46;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: #cbd5e1;
+}
+
+/* ── RIGHT column ── */
+.hero-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column;
+    padding: 60px 24px;
+    text-align: center;
+  }
+  .hero-left { align-items: center; max-width: 100%; }
+  .hero-buttons, .hero-stats { justify-content: center; }
+}
