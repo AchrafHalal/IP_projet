@@ -4,6 +4,7 @@ import Layout from './components/Layout/Layout.jsx';
 import Device from './components/DeviceCompatibility/DeviceCompatibility.jsx'
 import './App.css'; 
 import Carousel from './components/Hero/carousel/carousel.jsx'
+import Features from './components/Features/Features.jsx';
 
 
 function App() {
@@ -11,6 +12,8 @@ function App() {
     <Layout>
       <Hero />
       <Carousel />
+      <Features />
+
       
       <Device />
       {/* Add other sections here */}
