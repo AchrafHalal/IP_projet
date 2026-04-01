@@ -10,14 +10,14 @@ function Navbar() {
 
             {/* 1. Logo Section */}
             <div className="navbar-logo">
-              <a href="/">LOGO</a>
+              <a href="#Hero">LOGO</a>
             </div>
 
             {/* 2. Middle Links */}
             <ul className="navbar-links">
               <li><a href="#features">Section1</a></li>
               <li><a href="#pricing">Section2</a></li>
-              <li><a href="#about">Section3</a></li>
+              <li><a href="#compatibility">Compatibility</a></li>
             </ul>
 
             {/* 3. Call to Action Button */}
