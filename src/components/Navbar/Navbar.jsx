@@ -15,9 +15,11 @@ function Navbar() {
 
             {/* 2. Middle Links */}
             <ul className="navbar-links">
-              <li><a href="#features">Section1</a></li>
-              <li><a href="#pricing">Section2</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Plans</a></li>
+              <li><a href="#BuyerJourney">Your Journey</a></li>
               <li><a href="#compatibility">Compatibility</a></li>
+              <li><a href="#FAQ">FAQ</a></li>
             </ul>
 
             {/* 3. Call to Action Button */}

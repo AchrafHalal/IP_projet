@@ -258,7 +258,7 @@ export default function BuyerJourney() {
   const step = steps[active];
 
   return (
-    <section className="bj-section">
+    <section className="bj-section" id="BuyerJourney">
       <div className="bj-header">
         <p className="bj-tag">YOUR JOURNEY</p>
         <h2 className="bj-title">From browsing to streaming<br />in 4 simple steps.</h2>

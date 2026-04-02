@@ -97,7 +97,7 @@ export default function FaqPage() {
   };
 
   return (
-    <section className="faq-section">
+    <section className="faq-section" id="FAQ">
       <div className="faq-container">
 
         {/* HEADER */}
