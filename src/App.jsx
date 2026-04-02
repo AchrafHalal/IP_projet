@@ -5,6 +5,8 @@ import Device from './components/DeviceCompatibility/DeviceCompatibility.jsx'
 import './App.css'; 
 import Carousel from './components/Hero/carousel/carousel.jsx'
 import Features from './components/Features/Features.jsx';
+import FaqPage from './components/FAQ/FaqPage.jsx';
+import Footer from './components/Footer/FooterPage.jsx';
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
 
       
       <Device />
+      <FaqPage />
+      <Footer />
       {/* Add other sections here */}
     </Layout>
   );
