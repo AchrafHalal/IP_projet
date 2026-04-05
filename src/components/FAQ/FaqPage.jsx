@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { ChevronDown, MessageCircle } from "lucide-react"; // Upgraded icons
 import "./FaqStyle.css";
 
 // ─── DATA ─────────────────────────────────────────
@@ -51,27 +52,24 @@ const CATEGORIES = [
   { id: "billing", label: "Billing" },
 ];
 
-// ─── ICON ─────────────────────────────────────────
-const PlusIcon = ({ open }) => (
-  <span className={`faq-icon ${open ? "open" : ""}`}>
-    +
-  </span>
-);
-
 // ─── ITEM ─────────────────────────────────────────
 const FAQItem = ({ item, open, onToggle }) => (
-  <div className="faq-item">
+  <div className={`faq-item ${open ? "faq-item--open" : ""}`}>
     <button className="faq-question" onClick={onToggle}>
       <div className="faq-q-left">
-        <span className={`faq-tag faq-${item.cat}`}>
+        <span className="faq-tag">
           {item.cat}
         </span>
-        <span className={`faq-q-text ${open ? "active" : ""}`}>
+        <span className="faq-q-text">
           {item.q}
         </span>
       </div>
 
-      <PlusIcon open={open} />
+      <ChevronDown 
+        size={20} 
+        strokeWidth={2.5} 
+        className={`faq-icon ${open ? "open" : ""}`} 
+      />
     </button>
 
     <div className={`faq-answer ${open ? "open" : ""}`}>
@@ -102,7 +100,7 @@ export default function FaqPage() {
 
         {/* HEADER */}
         <div className="faq-header">
-          <span className="faq-eyebrow">Support</span>
+          <div className="faq-badge">FAQ</div>
           <h2 className="faq-title">Frequently Asked Questions</h2>
           <p className="faq-subtitle">
             Everything you need to know about our IPTV service.
@@ -145,10 +143,11 @@ export default function FaqPage() {
 
             <a
                 href="https://wa.me/212XXXXXXXXX"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="faq-btn-whatsapp"
             >
-                💬 Contact Us on WhatsApp
+                <MessageCircle size={20} /> Contact Us on WhatsApp
             </a>
         </div>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./BuyerJourney.css";
 import { MessageCircle, CreditCard, Landmark } from 'lucide-react';
 
@@ -64,20 +64,25 @@ function PlanStep() {
     { id: 3, name: "1 Year",   price: "70$",  badge: "Best Deal",connections: 3, devices: "All devices" },
   ];
   return (
-    <div className="bj-plan-grid">
-      {plans.map((p) => (
-        <button
-          key={p.id}
-          className={`bj-plan-card ${selected === p.id ? "bj-plan-card--active" : ""}`}
-          onClick={() => setSelected(p.id)}
-        >
-          {p.badge && <span className="bj-plan-badge">{p.badge}</span>}
-          <div className="bj-plan-name">{p.name}</div>
-          <div className="bj-plan-price">{p.price}</div>
-          <div className="bj-plan-detail">{p.connections} connection{p.connections > 1 ? "s" : ""}</div>
-          <div className="bj-plan-detail">{p.devices}</div>
-        </button>
-      ))}
+    <div className="bj-plan-step-container">
+      {/* 2x2 Grid for Plans */}
+      <div className="bj-plan-grid">
+        {plans.map((p) => (
+          <button
+            key={p.id}
+            className={`bj-plan-card ${selected === p.id ? "bj-plan-card--active" : ""}`}
+            onClick={() => setSelected(p.id)}
+          >
+            {p.badge && <span className="bj-plan-badge">{p.badge}</span>}
+            <div className="bj-plan-name">{p.name}</div>
+            <div className="bj-plan-price">{p.price}</div>
+            <div className="bj-plan-detail">{p.connections} connection{p.connections > 1 ? "s" : ""}</div>
+            <div className="bj-plan-detail">{p.devices}</div>
+          </button>
+        ))}
+      </div>
+      
+      {/* Button safely outside the grid */}
       <a
         href="https://wa.me/YOUR_NUMBER?text=I want to subscribe"
         target="_blank"
@@ -111,7 +116,7 @@ function ContactStep() {
         </div>
         <div className="bj-info-row">
           <span className="bj-info-icon">🌍</span>
-          <span>Available <strong>7 days a week</strong>, Arabic & French support</span>
+          <span>Available <strong>7 days a week</strong>, Swedish & English support</span>
         </div>
         <div className="bj-info-row">
           <span className="bj-info-icon">🔒</span>
@@ -134,7 +139,6 @@ function ContactStep() {
 
 // ── Payment step content ─────────────────────────────────────────────
 function PaymentStep() {
-  // Replace these with your actual links
   const STRIPE_LINK = "https://buy.stripe.com/example";
   const WISE_LINK = "https://wise.com/pay/me/yourlink";
   const WHATSAPP_LINK = "https://wa.me/YOUR_NUMBER?text=I want to pay for my IPTV subscription";
@@ -150,11 +154,9 @@ function PaymentStep() {
       </div>
 
       <div className="bj-payment-methods">
-        {/* Stripe / Credit Card Link */}
         <a href={STRIPE_LINK} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
           <div className="bj-method-card" style={{ cursor: 'pointer', transition: 'border 0.2s' }}>
             <div className="bj-method-icon">
-              {/* Black Credit Card Vector */}
               <CreditCard size={22} color="#000000" strokeWidth={2.5} />
             </div>
             <div>
@@ -164,11 +166,9 @@ function PaymentStep() {
           </div>
         </a>
 
-        {/* Wise / International Transfer */}
         <a href={WISE_LINK} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
           <div className="bj-method-card" style={{ cursor: 'pointer' }}>
             <div className="bj-method-icon">
-              {/* Landmark/Bank Vector for Wise/Transfer */}
               <Landmark size={22} color="#001A46" strokeWidth={2.5} />
             </div>
             <div>
@@ -177,8 +177,6 @@ function PaymentStep() {
             </div>
           </div>
         </a>
-
-
       </div>
 
       <div className="bj-payment-note">
@@ -201,7 +199,6 @@ function PaymentStep() {
 function AccessStep() {
   return (
     <div className="bj-access-wrap">
-      {/* Success card */}
       <div className="bj-success-card">
         <div className="bj-success-check">✓</div>
         <div>
@@ -210,7 +207,6 @@ function AccessStep() {
         </div>
       </div>
 
-      {/* What you receive */}
       <p className="bj-access-label">What you'll receive</p>
       <div className="bj-access-items">
         {[
@@ -298,14 +294,13 @@ export default function BuyerJourney() {
                 <h3 className="bj-card-title">{step.title}</h3>
                 <p className="bj-card-sub">{step.subtitle}</p>
               </div>
-              {/* Progress dots */}
               <div className="bj-progress-dots">
                 {steps.map((_, i) => (
                   <div
                     key={i}
                     className="bj-progress-dot"
                     style={{
-                      background: i === active ? "#001A46" : i < active ? "#001A4666" : "#e2e8f0",
+                      background: i === active ? "#001A46" : i < active ? "rgba(0, 26, 70, 0.4)" : "#e2e8f0",
                       width: i === active ? "24px" : "8px",
                     }}
                   />

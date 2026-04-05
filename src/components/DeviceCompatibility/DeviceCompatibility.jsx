@@ -1,209 +1,233 @@
-import { useState } from 'react'
-import './DeviceCompatibility.css'
+import React, { useState, useEffect } from 'react';
+import './DeviceCompatibility.css';
 import { devices } from './Devices/index.jsx';
+// IMPORT LUCIDE ICONS
+import { Tv, Smartphone, Laptop, TabletSmartphone, MonitorPlay, Cast, PlaySquare, Box } from 'lucide-react';
 
 // ─────────────────────────────────────────────
-//  Each device has:
-//  - steps[]       → text instructions (one per carousel slide)
-//  - images[]      → put your screenshot paths here, e.g. "/steps/firestick/step1.png"
+//  Category Mapping
 // ─────────────────────────────────────────────
-
+const CATEGORIES = [
+  { 
+    id: 'streaming', 
+    label: 'Streaming Devices', 
+    matchLabels: ['Fire Stick', 'Apple TV', 'MAG Box', 'Enigma2 / Dreambox'] 
+  },
+  { 
+    id: 'tv', 
+    label: 'Smart TVs', 
+    matchLabels: ['Samsung Smart TV', 'Android TV / Box', 'LG Smart TV'] 
+  },
+  { 
+    id: 'mobile', 
+    label: 'Mobile & Tablet', 
+    matchLabels: ['iPhone / iPad', 'Android Phone'] 
+  },
+  { 
+    id: 'pc', 
+    label: 'Computers & Players', 
+    matchLabels: ['Windows PC', 'Mac', 'VLC / Any Player'] 
+  }
+];
 
 // ─────────────────────────────────────────────
-//  Step Carousel inside the card
+//  Icon Assignment Logic (Overrides PNGs)
 // ─────────────────────────────────────────────
-function StepCarousel({ steps, color }) {
-  const [current, setCurrent] = useState(0)
+const getDeviceIcon = (label) => {
+  const name = label.toLowerCase();
+  if (name.includes('phone') || name.includes('ipad')) return <TabletSmartphone size={20} strokeWidth={1.5} />;
+  if (name.includes('pc') || name.includes('mac')) return <Laptop size={20} strokeWidth={1.5} />;
+  if (name.includes('apple tv') || name.includes('android tv')) return <MonitorPlay size={20} strokeWidth={1.5} />;
+  if (name.includes('fire stick') || name.includes('mag') || name.includes('enigma2')) return <Cast size={20} strokeWidth={1.5} />;
+  if (name.includes('vlc')) return <PlaySquare size={20} strokeWidth={1.5} />;
+  // Default for Smart TVs
+  return <Tv size={20} strokeWidth={1.5} />;
+};
 
-  const prev = () => setCurrent((c) => (c === 0 ? steps.length - 1 : c - 1))
-  const next = () => setCurrent((c) => (c === steps.length - 1 ? 0 : c + 1))
+// ─────────────────────────────────────────────
+//  Step Carousel
+// ─────────────────────────────────────────────
+function StepCarousel({ steps }) {
+  const [current, setCurrent] = useState(0);
 
-  const step = steps[current]
+  const prev = () => setCurrent((c) => (c === 0 ? steps.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === steps.length - 1 ? 0 : c + 1));
+
+  const step = steps[current] || {};
 
   return (
     <div className="sc-wrap">
-      {/* Image area */}
-      <div
-        className="sc-img-wrap"
-        style={{ background: color + '10', border: `1px solid ${color}22` }}
-      >
+      <div className="sc-img-wrap">
         {step.image ? (
           <img src={step.image} alt={step.title} className="sc-img" />
         ) : (
-          <div className="sc-img-placeholder" style={{ color: color + '66' }}>
-            <span style={{ fontSize: '40px' }}>🖼️</span>
-            <span className="sc-img-label">Add screenshot here</span>
-            <code className="sc-img-path">{step.image}</code>
+          <div className="sc-img-placeholder">
+            <span style={{ fontSize: '40px', marginBottom: '8px' }}>🖼️</span>
+            <span className="sc-img-label">UI Screenshot</span>
+            <code className="sc-img-path">{step.image || 'Add image path'}</code>
           </div>
         )}
-
-        {/* Step counter badge */}
-        <div className="sc-badge" style={{ background: color }}>
+        <div className="sc-badge">
           {current + 1} / {steps.length}
         </div>
       </div>
 
-      {/* Step text */}
       <div className="sc-body">
-        <p className="sc-step-num" style={{ color: color }}>
-          Step {current + 1}
-        </p>
+        <p className="sc-step-num">Step {current + 1}</p>
         <h4 className="sc-step-title">{step.title}</h4>
         <p className="sc-step-text">{step.text}</p>
       </div>
 
-      {/* Navigation */}
       <div className="sc-nav">
-        <button
-          className="sc-nav-btn"
-          onClick={prev}
-          style={{ border: `1px solid ${color}33`, color: color }}
-        >
-          ‹ Prev
-        </button>
-
+        <button className="sc-nav-btn" onClick={prev}>‹ Prev</button>
         <div className="sc-dots">
           {steps.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className="sc-dot"
-              style={{
-                background: i === current ? color : color + '33',
-                width: i === current ? '20px' : '8px'
-              }}
+              className={`sc-dot ${i === current ? 'active' : ''}`}
+              aria-label={`Go to step ${i + 1}`}
             />
           ))}
         </div>
-
-        <button
-          className="sc-nav-btn"
-          onClick={next}
-          style={{ border: `1px solid ${color}33`, color: color }}
-        >
-          Next ›
-        </button>
+        <button className="sc-nav-btn" onClick={next}>Next ›</button>
       </div>
     </div>
-  )
+  );
 }
 
 // ─────────────────────────────────────────────
 //  Main component
 // ─────────────────────────────────────────────
 export default function DeviceCompatibility() {
-  const [active, setActive] = useState(devices[0]);
+  const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id);
+  const [activeDevice, setActiveDevice] = useState(devices.find(d => d.label === 'Fire Stick') || devices[0]);
   const [animating, setAnimating] = useState(false);
-  const [showAll, setShowAll] = useState(false);
 
-  const visibleDevices = showAll ? devices : devices.slice(0, 9);
+  // Get the devices that belong to the currently selected category
+  const currentCategoryObj = CATEGORIES.find(c => c.id === activeCategory);
+  const visibleDevices = devices.filter(d => currentCategoryObj.matchLabels.includes(d.label));
 
-  const select = (device) => {
-    if (device.id === active.id) return;
+  const handleCategoryClick = (categoryId) => {
+    if (categoryId === activeCategory) return;
+    setActiveCategory(categoryId);
+    
+    // Automatically select the first device in the new category
+    const newCategoryObj = CATEGORIES.find(c => c.id === categoryId);
+    const firstDeviceInCategory = devices.filter(d => newCategoryObj.matchLabels.includes(d.label))[0];
+    
+    if (firstDeviceInCategory) {
+      selectDevice(firstDeviceInCategory);
+    }
+  };
+
+  const selectDevice = (device) => {
+    if (device.id === activeDevice.id) return;
     setAnimating(true);
     setTimeout(() => {
-      setActive(device);
+      setActiveDevice(device);
       setAnimating(false);
-    }, 180);
+    }, 200); 
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-active');
+        }
+      });
+    }, { threshold: 0.1 }); 
+
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect(); 
+  }, []);
 
   return (
     <section className="dc-section" id="compatibility">
       <div className="dc-container">
-          <div className="dc-header">
-        <p className="dc-tag">COMPATIBILITY</p>
-        <h2 className="dc-title">Works on all your devices.</h2>
-        <p className="dc-subtitle">
-          Select your device and follow the step-by-step installation guide.
-        </p>
-      </div>
-
-      <div className="dc-panel">
-        {/* LEFT list */}
-        <div className={`dc-list ${showAll ? "dc-list--expanded" : ""}`}>
-          {visibleDevices.map((d) => (
-            <button
-              key={d.id}
-              className={`dc-item ${active.id === d.id ? 'dc-item--active' : ''}`}
-              onClick={() => select(d)}
-              style={active.id === d.id ? { color: d.appColor } : {}}
-            >
-              <span className="dc-item-icon">
-                {d.deviceImage ? (
-                  <img src={d.deviceImage} alt={d.label} />
-                ) : (
-                  d.icon
-                )}
-              </span>
-              <span className="dc-item-label">{d.label}</span>
-            </button>
-          ))}
-
-          {devices.length > 9 && (
-            <button
-              className="dc-show-more"
-              onClick={() => setShowAll(!showAll)}
-            >
-              {showAll ? "Show Less ▲" : "Show More ▼"}
-            </button>
-          )}
+        
+        <div className="dc-header">
+          <div className="section-badge reveal">Compatibility</div>
+          <h2 className="dc-title reveal delay-1">Works on all your devices.</h2>
+          <p className="dc-subtitle reveal delay-2">
+            Select your device and follow the step-by-step installation guide.
+          </p>
         </div>
 
-        {/* RIGHT card */}
-        <div className="dc-card-wrap">
-          <div className={`dc-card ${animating ? 'dc-card--out' : ''}`}>
-            {/* Card header */}
-            <div className="dc-card-top">
-              <div
-                className="dc-app-icon"
-                style={{ background: active.appColor + '15' }}
+        <div className="dc-panel reveal delay-3">
+          
+          {/* TIER 1: CATEGORY TABS */}
+          <div className="dc-categories">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                className={`dc-category-btn ${activeCategory === cat.id ? 'active' : ''}`}
+                onClick={() => handleCategoryClick(cat.id)}
               >
-                {active.deviceImage ? (
-                  <img
-                    src={active.deviceImage}
-                    alt={active.appName}
-                    style={{
-                      width: '60px',
-                      height: '60px',
-                      objectFit: 'contain'
-                    }}
-                  />
-                ) : (
-                  <span style={{ fontSize: '38px', lineHeight: 1 }}>
-                    {active.icon}
-                  </span>
-                )}
-              </div>
-              <div className="dc-card-top-text">
-                <h3 className="dc-app-name">{active.appName}</h3>
-                <p className="dc-app-desc">{active.description}</p>
-              </div>
-            </div>
+                {cat.label}
+              </button>
+            ))}
+          </div>
 
-            {/* Features */}
-            <div className="dc-divider" />
-            <div className="dc-features-grid">
-              {active.features.map((f, i) => (
-                <div className="dc-feature" key={i}>
-                  <span
-                    className="dc-check"
-                    style={{ background: active.appColor, color: '#fff' }}
-                  >
-                    ✓
+          {/* TIER 2: DEVICE PILLS (Filtered) */}
+          <div className="dc-list-wrapper" key={activeCategory}>
+            <div className="dc-list">
+              {visibleDevices.map((d) => (
+                <button
+                  key={d.id}
+                  className={`dc-item ${activeDevice.id === d.id ? 'dc-item--active' : ''}`}
+                  onClick={() => selectDevice(d)}
+                >
+                  <span className="dc-item-icon">
+                    {/* INJECT LUCIDE ICONS HERE */}
+                    {getDeviceIcon(d.label)}
                   </span>
-                  <span className="dc-feature-text">{f}</span>
-                </div>
+                  <span className="dc-item-label">{d.label}</span>
+                </button>
               ))}
             </div>
-
-            {/* Step carousel */}
-            <div className="dc-divider" style={{ marginTop: '20px' }} />
-            <p className="dc-steps-label">Installation steps</p>
-            <StepCarousel steps={active.steps} color={active.appColor} />
           </div>
+
+          {/* TIER 3: BOTTOM CARD DETAILS */}
+          <div className="dc-card-wrap">
+            <div className={`dc-card ${animating ? 'dc-card--out' : ''}`}>
+              
+              <div className="dc-card-top">
+                <div className="dc-app-icon">
+                  {/* INJECT LARGE LUCIDE ICON HERE */}
+                  {React.cloneElement(getDeviceIcon(activeDevice.label), { size: 40 })}
+                </div>
+                <div className="dc-card-top-text">
+                  <h3 className="dc-app-name">{activeDevice.appName || activeDevice.label}</h3>
+                  <p className="dc-app-desc">{activeDevice.description || "Installation guide and features."}</p>
+                </div>
+              </div>
+
+              <div className="dc-divider" />
+
+              <p className="dc-steps-label">Installation steps</p>
+              <StepCarousel steps={activeDevice.steps || []} />
+
+              <div className="dc-divider" style={{ marginTop: '30px', marginBottom: '20px' }} />
+
+              <p className="dc-steps-label">App Features</p>
+              <div className="dc-features-grid">
+                {(activeDevice.features || []).map((f, i) => (
+                  <div className="dc-feature" key={i}>
+                    <span className="dc-check">✓</span>
+                    <span className="dc-feature-text">{f}</span>
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+
         </div>
       </div>
-      </div>
     </section>
-  )
+  );
 }

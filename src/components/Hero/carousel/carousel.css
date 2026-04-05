@@ -1,78 +1,128 @@
-/* InfiniteMarquee.css */
-.marquee-wrapper {
+/* --- CONTAINER --- */
+.carousel-section {
+  width: 100%;
+  background-color: #FAFAFB; /* Matches your Hero background */
+  padding: 40px 0 60px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* --- HEADING --- */
+.carousel-heading {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: #999; /* Soft grey text */
+  margin-bottom: 35px;
+  text-transform: uppercase;
+}
+
+/* --- CAROUSEL TRACK --- */
+.carousel-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: auto;
-  width: 90%;
-  background: inherit;
-  padding: 18px 0;
-  position: relative;
 }
 
-.marquee-track {
+.carousel-track {
   display: flex;
-  gap: 20px;
-  width: max-content;
-  animation: marquee-scroll 30s linear infinite;
+  /* 8 unique logos * 200px width = 1600px. Duplicated = 3200px */
+  width: calc(200px * 16); 
+  animation: scroll 35s linear infinite; 
 }
 
-/* Pause on hover — optional */
-.marquee-wrapper:hover .marquee-track {
+/* Pause the scrolling when a user hovers over it */
+.carousel-track:hover {
   animation-play-state: paused;
 }
 
-.marquee-card {
-  flex-shrink: 0;
-  width: 60px;
-  height: 80px;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid whitesmoke;
+/* --- LOGO ITEMS & B&W EFFECT --- */
+.logo-item {
+  width: 200px; 
+  height: 60px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.logo-item img {
+  max-width: 100%;
+  max-height: 35px; /* Keeps them all uniform */
+  object-fit: contain;
+  
+  /* THE BLACK AND WHITE FILTER */
+  filter: grayscale(100%); 
+  opacity: 0.45; /* Mutes them to a soft grey */
+  transition: all 0.3s ease;
   cursor: pointer;
-  transition: transform 0.2s;
 }
 
-.marquee-card:hover {
-  transform: scale(1.05);
+/* Makes them "pop" into full color when hovered over */
+.logo-item img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
-.marquee-card img {
-  width: 100%;
+/* --- EDGE FADING --- */
+.carousel-fade-left,
+.carousel-fade-right {
+  position: absolute;
+  top: 0;
   height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.marquee-label {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 4px 8px;
-  background: linear-gradient(transparent, rgba(0,0,0,0.75));
-  font-size: 11px;
-  color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Fade edges */
-.marquee-fade-left,
-.marquee-fade-right {
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 80px;
+  width: 15%; 
   z-index: 2;
-  pointer-events: none;
+  pointer-events: none; 
 }
-.marquee-fade-left  { left:  0; background: inherit; }
-.marquee-fade-right { right: 0; background: inherit; }
 
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }  /* -50% because items are doubled */
+.carousel-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #FAFAFB 0%, transparent 100%);
+}
+
+.carousel-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #FAFAFB 0%, transparent 100%);
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Translate exactly half the track width (the 8 original logos) */
+    transform: translateX(calc(-200px * 8)); 
+  }
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .logo-item {
+    width: 140px; /* Tighter spacing on phones */
+    padding: 0 15px;
+  }
+  
+  .logo-item img {
+    max-height: 28px; /* Slightly smaller logos */
+  }
+  
+  .carousel-track {
+    /* 8 unique logos * 140px width = 1120px. Duplicated = 2240px */
+    width: calc(140px * 16);
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      /* Translate exactly half the mobile track width */
+      transform: translateX(calc(-140px * 8)); 
+    }
+  }
 }

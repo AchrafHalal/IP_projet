@@ -1,0 +1,154 @@
+/* === MAIN SECTION STYLES === */
+.benefits-section {
+  background-color: #FAFAFB; 
+  padding: 70px 20px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.section-badge {
+  display: inline-block;
+  background-color: rgba(0, 26, 70, 0.08); 
+  color: #001A46; 
+  padding: 6px 16px; 
+  border-radius: 50px; 
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 16px; 
+  letter-spacing: 0.02em;
+}
+
+.section-title {
+  color: #181818; 
+  font-size: 2.5rem; 
+  font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.03em; 
+  text-wrap: balance; 
+}
+
+/* === THE NEW BADGE SUBTITLE === */
+.section-subtitle-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0 auto 50px auto;
+  max-width: 800px;
+}
+
+.subtitle-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #555555;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+
+.subtitle-badge:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 26, 70, 0.15);
+}
+
+.badge-icon {
+  color: #10b981; 
+  stroke-width: 3px; 
+}
+
+/* === THE GRID === */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px; 
+  max-width: 1100px; 
+  margin: 0 auto;
+}
+
+/* === THE NEW "CARDIFY" DESIGN === */
+.benefit-card {
+  background: #ffffff; 
+  padding: 24px 24px; 
+  border: 1px solid #e2e8f0; 
+  border-radius: 16px; 
+  text-align: left; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01); 
+  cursor: default; 
+  /* Notice we only transition the hover states now! The reveal handles the entrance */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+/* The premium hover lift */
+.benefit-card:hover {
+  transform: translateY(-5px) !important; /* !important ensures hover overrides the scroll reveal transform */
+  box-shadow: 0 12px 30px rgba(0, 26, 70, 0.08); 
+  border-color: rgba(0, 26, 70, 0.15); 
+}
+
+/* --- THE MODERN "SQUIRCLE" ICON --- */
+.benefit-icon-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px; 
+  height: 46px; 
+  margin: 0 0 16px 0; 
+  border-radius: 12px; 
+  background-color: rgba(0, 26, 70, 0.06); 
+  color: #001A46; 
+  transition: all 0.3s ease;
+}
+
+/* Icon popping effect */
+.benefit-card:hover .benefit-icon-circle {
+  transform: scale(1.05);
+  background-color: rgba(0, 26, 70, 0.09);
+}
+
+/* --- TYPOGRAPHY INSIDE CARDS --- */
+.benefit-title {
+  color: #181818; 
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px; 
+  letter-spacing: -0.01em;
+}
+
+.benefit-description {
+  color: #555555; 
+  font-size: 0.95rem; 
+  line-height: 1.6;
+  max-width: 100%; 
+  margin: 0; 
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+@media (max-width: 1024px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  /* Reset inline delay on mobile so they load all at once, preventing a long slow cascade on small screens */
+  .benefit-card {
+     transition-delay: 0s !important;
+  }
+}
+
+
+

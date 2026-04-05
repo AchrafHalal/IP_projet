@@ -1,54 +1,94 @@
-import React from 'react';
-import HeroCards from './HeroCards/HeroCards'; 
+import React, { useState, useRef } from 'react';
+import { FaWhatsapp, FaStar, FaCheckCircle } from 'react-icons/fa';
 import './Hero.css';
 
-const Hero = () => {
-  return (
-    <section className="hero-section" id='Hero'>
-      <div className="hero-container">
-        {/* LEFT: text and CTA */}
-        <div className="hero-left">
-          <h1 className="hero-title">Movies. Series. Sports. All Yours.</h1>
+function Hero() {
+  const heroRef = useRef(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-          <p className="hero-subtitle">
-            Discover trending titles and personalized
-            <br />
-            recommendations instantly.
+  // Tracks the mouse position inside the hero section
+  const handleMouseMove = (e) => {
+    if (!heroRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const whatsappLink = "https://wa.me/YOUR_NUMBER_HERE?text=Hi!%20I%20would%20like%20to%20get%20the%201-Month%20Starter%20Pass%20for%20$14.";
+
+  return (
+    <section 
+      className="hero-clean" 
+      id="Hero" 
+      ref={heroRef} 
+      onMouseMove={handleMouseMove}
+      style={{ '--mouse-x': `${mousePos.x}px`, '--mouse-y': `${mousePos.y}px` }}
+    >
+      {/* BACKGROUND LAYERS */}
+      <div className="dot-grid-base"></div>
+      <div className="dot-grid-highlight"></div>
+
+      {/* CONTENT LAYER */}
+      <div className="hero-content-wrapper">
+        
+        {/* CENTERED FUNNEL */}
+        <div className="hero-text-side">
+          
+          <div className="trust-indicator">
+            <div className="avatar-group">
+              <div className="avatar avatar-1">H</div>
+              <div className="avatar avatar-2">M</div>
+              <div className="avatar avatar-3">Z</div>
+              <div className="avatar avatar-4">T</div>
+            </div>
+            <div className="trust-text-container">
+                <span><strong>1,000+</strong> Active Subscribers</span>
+                <div className="stars"><FaStar /><FaStar /><FaStar /><FaStar /><FaStar /></div>
+            </div>
+          </div>
+
+          <h1 className="hero-headline">
+            Premium IPTV <br />
+            <span className="accent-text">Subscriptions.</span>
+          </h1>
+          
+          <p className="hero-subhead">
+            Flawless 4K. Unbeatable Value, and backed by 24/7 support.
           </p>
 
-          <div className="hero-buttons">
-            <button className="btn-primary">Start 1-Month Trial (10$)</button>
-            <button className="btn-secondary">
-              <span className="btn-play-icon">▶</span>
-              <span className="btn-play-icon-text">Explore Genres</span>
-            </button>
+          <div className="hero-ctas">
+            {/* Primary: The Low-Risk Hook */}
+            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="btn-whatsapp-massive">
+              <FaWhatsapp className="icon-large" /> Claim 1-Month Pass via WhatsApp
+            </a>
+            
+            {/* Secondary: The Logical Next Step */}
+            <a href="#Pricing" className="btn-secondary-ghost">
+              View All Plans
+            </a>
           </div>
 
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <span className="stat-num">10K+</span>
-              <span className="stat-label">Titles</span>
+          <div className="hero-guarantees">
+            <div className="guarantee-item">
+              <FaCheckCircle className="guarantee-icon"/>
+              <span className="guarantee-title">Breathtaking 4K Visuals</span>
             </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="stat-num">4K</span>
-              <span className="stat-label">Ultra HD</span>
+            <div className="guarantee-item">
+              <FaCheckCircle className="guarantee-icon"/>
+              <span className="guarantee-title">Lag-Free Performance</span>
             </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="stat-num">5</span>
-              <span className="stat-label">Screens</span>
+            <div className="guarantee-item">
+              <FaCheckCircle className="guarantee-icon"/>
+              <span className="guarantee-title">24/7 Expert Support</span>
             </div>
           </div>
         </div>
 
-        {/* RIGHT: The animated card stack */}
-        <div className="hero-right">
-          <HeroCards />
-        </div>
       </div>
     </section>
   );
-};
+}
 
 export default Hero;

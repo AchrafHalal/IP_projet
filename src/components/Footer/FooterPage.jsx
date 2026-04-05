@@ -1,11 +1,14 @@
+import { MessageCircle } from "lucide-react";
 import "./FooterStyle.css";
 
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer-container">
 
-        {/* LEFT */}
+        {/* LEFT: Brand & CTA */}
         <div className="footer-brand">
           <h3 className="footer-logo">IPTV Pro</h3>
           <p className="footer-desc">
@@ -18,59 +21,60 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="footer-whatsapp"
+            aria-label="Contact Support on WhatsApp"
           >
-            💬 Contact Us on WhatsApp
+            <MessageCircle size={18} strokeWidth={2.5} /> Contact Us on WhatsApp
           </a>
         </div>
 
-        {/* LINKS */}
+        {/* RIGHT: Navigation Links (SEO Optimized) */}
         <div className="footer-links">
 
-          <div>
+          <div className="footer-column">
             <h4>Services</h4>
             <ul>
-              <li>Live Channels</li>
-              <li>Sports Streaming</li>
-              <li>Movies & Series</li>
-              <li>4K Content</li>
+              <li><a href="#channels">Live Channels</a></li>
+              <li><a href="#sports">Sports Streaming</a></li>
+              <li><a href="#movies">Movies & Series</a></li>
+              <li><a href="#4k">4K Content</a></li>
             </ul>
           </div>
 
-          <div>
+          <div className="footer-column">
             <h4>Support</h4>
             <ul>
-              <li>Help Center</li>
-              <li>FAQ</li>
-              <li>Contact Us</li>
-              <li>Status</li>
+              <li><a href="#help">Help Center</a></li>
+              <li><a href="#FAQ">FAQ</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#status">Status</a></li>
             </ul>
           </div>
 
-          <div>
+          <div className="footer-column">
             <h4>Devices</h4>
             <ul>
-              <li>Smart TV</li>
-              <li>Android / iOS</li>
-              <li>Fire Stick</li>
-              <li>PC & Mac</li>
+              <li><a href="#smart-tv">Smart TV</a></li>
+              <li><a href="#mobile">Android / iOS</a></li>
+              <li><a href="#firestick">Fire Stick</a></li>
+              <li><a href="#pc">PC & Mac</a></li>
             </ul>
           </div>
 
-          <div>
+          <div className="footer-column">
             <h4>Legal</h4>
             <ul>
-              <li>Privacy Policy</li>
-              <li>Terms of Service</li>
-              <li>Refund Policy</li>
+              <li><a href="#privacy">Privacy Policy</a></li>
+              <li><a href="#terms">Terms of Service</a></li>
+              <li><a href="#refunds">Refund Policy</a></li>
             </ul>
           </div>
 
         </div>
       </div>
 
-      {/* BOTTOM */}
+      {/* BOTTOM: Copyright */}
       <div className="footer-bottom">
-        <p>© 2026 IPTV Pro. All rights reserved.</p>
+        <p>© {currentYear} IPTV Pro. All rights reserved.</p>
       </div>
     </footer>
   );

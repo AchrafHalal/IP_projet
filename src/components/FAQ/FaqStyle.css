@@ -1,184 +1,233 @@
-/* SECTION */
+/* ── SECTION ── */
 .faq-section {
-  padding: 80px 0;
-  background: #fff;
+  padding: 80px 20px 100px 20px; 
+  background: #FAFAFB; /* Unified Background */
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* Unified Font */
 }
 
 .faq-container {
   max-width: 800px;
   margin: auto;
-  padding: 0 20px;
 }
 
-/* HEADER */
+/* ── HEADER ── */
 .faq-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
 }
 
-.faq-eyebrow {
-  font-size: 11px;
-  font-weight: 600;
-  color: #2563eb;
-  background: #eff6ff;
-  padding: 6px 14px;
-  border-radius: 999px;
+.faq-badge {
   display: inline-block;
-  margin-bottom: 12px;
+  background-color: rgba(0, 26, 70, 0.08); 
+  color: #001A46; 
+  padding: 6px 16px; 
+  border-radius: 50px; 
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 16px; 
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .faq-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #001A46;
-  margin-bottom: 10px;
+  font-size: clamp(32px, 5vw, 46px);
+  font-weight: 800;
+  color: #181818;
+  margin: 0 0 12px;
+  letter-spacing: -1.5px;
+  line-height: 1.1;
 }
 
 .faq-subtitle {
-  font-size: 14px;
-  color: #64748b;
+  font-size: 1.1rem;
+  color: #555555;
+  margin: 0;
 }
 
-/* TABS */
+/* ── TABS (Matched to Device/Journey Pills) ── */
 .faq-tabs {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   margin-bottom: 30px;
 }
 
 .faq-tab {
-  font-size: 12px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid #e5e7eb;
-  background: transparent;
-  color: #6b7280;
+  padding: 10px 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 50px; 
   cursor: pointer;
-  transition: 0.2s;
+  font-size: 14px;
+  font-weight: 600;
+  color: #555555;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.faq-tab:hover {
-  background: #f9fafb;
+.faq-tab:hover:not(.active) {
+  background-color: #f1f5f9; 
+  color: #181818;
 }
 
 .faq-tab.active {
-  background: #eff6ff;
-  color: #2563eb;
-  border-color: #bfdbfe;
+  font-weight: 700; 
+  background-color: rgba(0, 26, 70, 0.06); 
+  color: #001A46;
+  border-color: #001A46;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* ITEM */
+/* ── ITEM (Accordion) ── */
 .faq-item {
-  border-bottom: 1px solid #f1f5f9;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.faq-item--open {
+  border-color: rgba(0, 26, 70, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 26, 70, 0.04);
 }
 
 .faq-question {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 16px 0;
+  align-items: center;
+  padding: 20px 24px;
   background: none;
   border: none;
   cursor: pointer;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .faq-q-left {
   display: flex;
-  gap: 10px;
-  align-items: flex-start;
+  gap: 16px;
+  align-items: center;
+  text-align: left;
 }
 
+/* Clean, unified gray tag instead of the messy rainbow colors */
 .faq-tag {
-  font-size: 10px;
-  padding: 3px 8px;
-  border-radius: 6px;
-  font-weight: 600;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-weight: 700;
   text-transform: uppercase;
+  background: #f1f5f9;
+  color: #64748b;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
-
-/* TAG COLORS */
-.faq-general { background: #f3f4f6; color: #374151; }
-.faq-setup { background: #dbeafe; color: #1d4ed8; }
-.faq-technical { background: #fef3c7; color: #b45309; }
-.faq-devices { background: #ede9fe; color: #6d28d9; }
-.faq-billing { background: #dcfce7; color: #166534; }
 
 .faq-q-text {
-  font-size: 14px;
-  color: #1f2937;
+  font-size: 16px;
+  font-weight: 700;
+  color: #181818;
+  line-height: 1.4;
+  transition: color 0.2s;
 }
 
-.faq-q-text.active {
-  color: #2563eb;
+.faq-item:hover .faq-q-text {
+  color: #001A46;
 }
 
-/* ANSWER */
+/* ── ANSWER ── */
 .faq-answer {
   max-height: 0;
+  opacity: 0;
   overflow: hidden;
-  transition: 0.3s ease;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
 .faq-answer.open {
-  max-height: 300px;
-  padding-bottom: 16px;
+  max-height: 200px;
+  opacity: 1;
 }
 
 .faq-answer-content {
-  padding-left: 40px;
-  font-size: 14px;
-  color: #6b7280;
+  padding: 0 24px 24px 24px;
+  font-size: 15px;
+  color: #555555;
+  line-height: 1.6;
 }
 
-.faq-answer-content ul {
-  padding-left: 10px;
-}
-
-.faq-answer-content li {
-  margin-bottom: 6px;
+.faq-answer-content p {
+  margin: 0;
 }
 
 .faq-icon {
-  font-size: 18px;
-  transition: 0.3s;
+  color: #94a3b8;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 10px;
 }
 
 .faq-icon.open {
-  transform: rotate(45deg);
-  color: #2563eb;
+  transform: rotate(-180deg);
+  color: #001A46;
 }
 
-/* FOOTER */
+/* ── FOOTER ── */
 .faq-footer {
   margin-top: 50px;
   text-align: center;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
 }
 
 .faq-footer-text {
-  font-size: 14px;
-  color: #64748b;
-  margin-bottom: 16px;
-}
-
-/* WHATSAPP BUTTON */
-.faq-btn-whatsapp {
-  display: inline-block;
-  background: #25D366;
-  color: #fff;
-  padding: 12px 22px;
-  border-radius: 999px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-  transition: all 0.25s ease;
+  color: #181818;
+  margin: 0 0 16px 0;
 }
 
-/* hover effect */
+/* Matched to Buyer Journey Green Button */
+.faq-btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #16a34a;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: inherit;
+  transition: background 0.2s, transform 0.2s;
+}
+
 .faq-btn-whatsapp:hover {
-  transform: translateY(-2px);
-  background: #1ebe5d;
-  box-shadow: 0 12px 26px rgba(37, 211, 102, 0.4);
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .faq-q-left {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .faq-question {
+    padding: 16px 20px;
+  }
+
+  .faq-answer-content {
+    padding: 0 20px 20px 20px;
+  }
 }

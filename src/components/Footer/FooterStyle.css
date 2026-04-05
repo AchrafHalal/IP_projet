@@ -1,95 +1,136 @@
+/* ── SECTION ── */
 .footer {
-  background: #f8fafc;
-  padding: 60px 20px 20px;
+  background: #ffffff; /* Crisp white base */
+  border-top: 1px solid #e2e8f0; /* Soft separator from the section above */
+  padding: 80px 20px 20px 20px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 .footer-container {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  gap: 40px;
+  gap: 60px;
   flex-wrap: wrap;
 }
 
-/* BRAND */
+/* ── BRAND (Left Side) ── */
 .footer-brand {
-  max-width: 280px;
+  max-width: 320px;
 }
 
 .footer-logo {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 800;
   color: #001A46;
-  margin-bottom: 10px;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
 }
 
 .footer-desc {
   font-size: 14px;
   color: #64748b;
-  margin-bottom: 16px;
+  margin: 0 0 24px 0;
+  line-height: 1.6;
 }
 
-/* WHATSAPP BUTTON */
+/* ── WHATSAPP BUTTON ── */
 .footer-whatsapp {
-  display: inline-block;
-  background: #25D366;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #16a34a;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 12px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: none;
-  transition: 0.3s;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .footer-whatsapp:hover {
-  background: #1ebe5d;
+  background: #15803d;
+  transform: translateY(-1px);
 }
 
-/* LINKS */
+/* ── LINKS (Right Side) ── */
 .footer-links {
   display: flex;
-  gap: 40px;
+  gap: 60px;
   flex-wrap: wrap;
+  flex: 1;
+  justify-content: flex-end;
 }
 
-.footer-links h4 {
-  font-size: 14px;
-  margin-bottom: 10px;
-  color: #111827;
+.footer-column {
+  min-width: 120px;
 }
 
-.footer-links ul {
+.footer-column h4 {
+  font-size: 15px;
+  font-weight: 800;
+  color: #181818;
+  margin: 0 0 20px 0;
+}
+
+/* Clean up lists for SEO links */
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
 }
 
-.footer-links li {
-  font-size: 13px;
-  color: #6b7280;
-  cursor: pointer;
+.footer-column a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.footer-links li:hover {
-  color: #000;
+.footer-column a:hover {
+  color: #001A46; /* Brand blue on hover */
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-/* BOTTOM */
+/* ── BOTTOM (Copyright) ── */
 .footer-bottom {
-  margin-top: 40px;
-  padding-top: 15px;
-  border-top: 1px solid #e5e7eb;
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid #f1f5f9;
   text-align: center;
-  font-size: 13px;
-  color: #9ca3af;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
+.footer-bottom p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
   .footer-container {
     flex-direction: column;
+    gap: 50px;
+  }
+  
+  .footer-links {
+    justify-content: flex-start;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columns on very small phones */
     gap: 30px;
   }
 }

@@ -1,35 +1,51 @@
-import "./carousel.css";
+import React from 'react';
+import './carousel.css';
 
-const channels = [
-  { id: 1, label: "", image: "/logo/PL.png" },
-  { id: 2, label: "",      image: "/logo/bundesliga.png" },
-  { id: 3, label: "",      image: "/logo/netflix.png" },
-  { id: 4, label: "",   image: "/logo/laLiga.png" },
-  { id: 5, label: "",        image: "/logo/Champions.png" },
-  { id: 6, label: "",        image: "/logo/hbo.png" },
-  { id: 7, label: "",        image: "/logo/tenis.png" },
-  { id: 8, label: "",        image: "/logo/formula1.png" },
-  { id: 9, label: "",        image: "/logo/fifa.jpg" },
-  { id: 10, label: "",        image: "/logo/europa.png" },
+// Import all SVGs directly matching your exact filenames
+import amazonPrime from './assets/logos/AmazonPrime.svg';
+import discoveryPlus from './assets/logos/DiscoveryPlus.svg';
+import disney from './assets/logos/Disney.svg';
+import hbo from './assets/logos/HBO.svg';
+import netflix from './assets/logos/Netflix.svg';
+import svtPlay from './assets/logos/SVTPlay.svg';
+import tv4 from './assets/logos/TV4sweden.svg';
+import viaplay from './assets/logos/Viaplay.svg';
 
-];
+function Carousel() {
+  // Array using only the imported SVGs present in your folder
+  const logos = [
+    { name: 'SVT Play', path: svtPlay },
+    { name: 'Discovery+', path: discoveryPlus },
+    { name: 'TV4', path: tv4 },
+    { name: 'Netflix', path: netflix },
+    { name: 'HBO', path: hbo },
+    { name: 'Viaplay', path: viaplay },
+    { name: 'Disney+', path: disney },
+    { name: 'Amazon Prime', path: amazonPrime },
+  ];
 
-export default function InfiniteMarquee() {
-  // Duplicate items to create the seamless loop
-  const items = [...channels, ...channels];
+  // Duplicate for the infinite scrolling loop
+  const duplicatedLogos = [...logos, ...logos];
 
   return (
-    <div className="marquee-wrapper">
-      <div className="marquee-fade-left" />
-      <div className="marquee-fade-right" />
-      <div className="marquee-track">
-        {items.map((ch, i) => (
-          <div className="marquee-card" key={i}>
-            <img src={ch.image} alt={ch.label} />
-            <div className="marquee-label">{ch.label}</div>
-          </div>
-        ))}
+    <section className="carousel-section">
+      <p className="carousel-heading">PREMIUM CONTENT INCLUDES</p>
+      
+      <div className="carousel-wrapper">
+        <div className="carousel-track">
+          {duplicatedLogos.map((logo, index) => (
+            <div className="logo-item" key={`${logo.name}-${index}`}>
+              <img src={logo.path} alt={`${logo.name} logo`} loading="lazy" />
+            </div>
+          ))}
+        </div>
+        
+        {/* Premium fade effect on the edges */}
+        <div className="carousel-fade-left"></div>
+        <div className="carousel-fade-right"></div>
       </div>
-    </div>
+    </section>
   );
 }
+
+export default Carousel;

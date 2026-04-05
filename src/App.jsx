@@ -8,7 +8,8 @@ import Carousel from './components/Hero/carousel/carousel.jsx'
 import Features from './components/Features/Features.jsx';
 import FaqPage from './components/FAQ/FaqPage.jsx';
 import Footer from './components/Footer/FooterPage.jsx';
-
+import Benefits from './components/Benefits/Benefits.jsx';
+import Pricing from './components/Pricing/Pricing.jsx';
 
 function App() {
   return (
@@ -16,9 +17,10 @@ function App() {
       <Hero />
       <Carousel />
       <Features />
+      <Benefits />
 
-      
       <Device />
+      <Pricing />
       <BuyerJourney />
 
       <FaqPage />
