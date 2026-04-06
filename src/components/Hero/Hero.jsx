@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { FaWhatsapp, FaStar, FaCheckCircle } from 'react-icons/fa';
 import './Hero.css';
 

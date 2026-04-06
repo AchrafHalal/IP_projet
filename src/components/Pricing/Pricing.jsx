@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./Pricing.css";
-import { Check, CreditCard, ShieldCheck, Sparkles, Star } from "lucide-react";
+import { Check, ShieldCheck, Sparkles, Star } from "lucide-react";
 
 export default function Pricing() {
   const featuresList = [
