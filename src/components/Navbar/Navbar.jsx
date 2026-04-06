@@ -32,7 +32,7 @@ function Navbar() {
 
           {/* 1. Logo Section */}
           <div className="navbar-logo">
-            <a href="#Hero" onClick={closeMobileMenu}>LOGO</a>
+            <a href="#Hero" onClick={closeMobileMenu}>SvenskStream</a>
           </div>
 
           {/* 2. Desktop Links (Hidden on Mobile) */}

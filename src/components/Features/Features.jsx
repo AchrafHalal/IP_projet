@@ -43,16 +43,30 @@ import renoveringsdrommarImg from './Img_src/Shows/Renoveringsdrömmar.webp';
 import robinsonImg from './Img_src/Shows/Robinson.webp';
 import wahlgrensVarldImg from './Img_src/Shows/WahlgrensVarld.webp';
 
+// --- IMPORT ALL LOCAL SPORTS IMAGES ---
+import Sports1 from './Img_src/Sports/1.jpg';
+import Sports2 from './Img_src/Sports/2.jpg';
+import Sports3 from './Img_src/Sports/3.jpg';
+import Sports4 from './Img_src/Sports/4.jpg';
+import Sports5 from './Img_src/Sports/5.jpg';
+import Sports6 from './Img_src/Sports/6.jpg';
+import Sports7 from './Img_src/Sports/7.jpg';
+import Sports8 from './Img_src/Sports/8.jpg';
+import Sports9 from './Img_src/Sports/9.jpg';
+
+
 // The master database of content
 const contentData = {
   sports: [
-    { title: 'Wimbledon', image: 'https://via.placeholder.com/400x600/181818/FFFFFF?text=Wimbledon' },
-    { title: 'Roland-Garros', image: 'https://via.placeholder.com/400x600/001A46/FFFFFF?text=Roland-Garros' },
-    { title: 'US Open', image: 'https://via.placeholder.com/400x600/181818/FFFFFF?text=US+Open' },
-    { title: 'Australian Open', image: 'https://via.placeholder.com/400x600/001A46/FFFFFF?text=Australian+Open' },
-    { title: 'Swedish Open (Båstad)', image: 'https://via.placeholder.com/400x600/181818/FFFFFF?text=Swedish+Open' },
-    { title: 'Allsvenskan', image: 'https://via.placeholder.com/400x600/001A46/FFFFFF?text=Allsvenskan' },
-    { title: 'SHL', image: 'https://via.placeholder.com/400x600/181818/FFFFFF?text=SHL' },
+    { title: 'Wimbledon', image: Sports1 },
+    { title: 'Roland-Garros', image: Sports2 },
+    { title: 'US Open', image: Sports3 },
+    { title: 'Australian Open', image: Sports4 },
+    { title: 'Roland-Garros', image: Sports5 },
+    { title: 'US Open', image: Sports6 },
+    { title: 'Australian Open', image: Sports7 },
+    { title: 'Swedish Open (Båstad)', image: Sports8 },
+    { title: 'Allsvenskan', image: Sports9 },
   ],
   movies: [
     { title: 'Avatar: Fire and Ash', image: avatarImg },

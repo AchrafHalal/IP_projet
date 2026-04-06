@@ -10,7 +10,7 @@ export default function Footer() {
 
         {/* LEFT: Brand & CTA */}
         <div className="footer-brand">
-          <h3 className="footer-logo">IPTV Pro</h3>
+          <h3 className="footer-logo">SvenskStream</h3>
           <p className="footer-desc">
             Watch thousands of live channels, movies, and series anytime,
             anywhere. High quality streaming with zero interruptions.
