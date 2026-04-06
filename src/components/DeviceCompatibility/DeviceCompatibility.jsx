@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './DeviceCompatibility.css';
 import { devices } from './Devices/index.jsx';
 // IMPORT LUCIDE ICONS
-import { Tv, Smartphone, Laptop, TabletSmartphone, MonitorPlay, Cast, PlaySquare, Box } from 'lucide-react';
 
 // ─────────────────────────────────────────────
 //  Category Mapping
