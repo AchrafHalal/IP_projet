@@ -1,5 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import "./FooterStyle.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -63,9 +64,9 @@ export default function Footer() {
           <div className="footer-column">
             <h4>Legal</h4>
             <ul>
-              <li><a href="#privacy">Privacy Policy</a></li>
-              <li><a href="#terms">Terms of Service</a></li>
-              <li><a href="#refunds">Refund Policy</a></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/terms">Terms of Service</Link></li>
+              <li><Link to="/refund">Refund Policy</Link></li>
             </ul>
           </div>
 

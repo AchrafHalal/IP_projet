@@ -1,32 +1,25 @@
-import React from 'react';
-import Hero from './components/Hero/Hero.jsx';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from './components/Layout/Layout.jsx';
-import Device from './components/DeviceCompatibility/DeviceCompatibility.jsx'
-import BuyerJourney from './components/BuyerJourney/BuyerJourney.jsx';
-import './App.css'; 
-import Carousel from './components/Hero/carousel/carousel.jsx'
-import Features from './components/Features/Features.jsx';
-import FaqPage from './components/FAQ/FaqPage.jsx';
-import Footer from './components/Footer/FooterPage.jsx';
-import Benefits from './components/Benefits/Benefits.jsx';
-import Pricing from './components/Pricing/Pricing.jsx';
+
+import Home from "./Pages/Home.jsx";
+import Privacy from "./Pages/Privacy.jsx";
+import Terms from "./Pages/Terms.jsx";
+import Refund from "./Pages/Refund.jsx";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
-    <Layout>
-      <Hero />
-      <Carousel />
-      <Features />
-      <Benefits />
-
-      <Device />
-      <Pricing />
-      <BuyerJourney />
-
-      <FaqPage />
-      <Footer />
-      {/* Add other sections here */}
-    </Layout>
+    <Router>
+    <ScrollToTop />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/refund" element={<Refund />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 
