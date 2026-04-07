@@ -1,47 +1,32 @@
-export const Windows =   {
-    id: 'windows',
-    label: 'Windows PC',
-    deviceImage: '/DeviceLogos/Windows.jfif',
-    appName: 'Windows PC',
-    appColor: '#0ea5e9',
-    description:
-      'Stream on any Windows PC using VLC, IPTV Smarters Web, or TiviMate web player.',
-    steps: [
-      {
-        title: 'Download VLC Player',
-        text: 'Go to videolan.org and download VLC for Windows. Install it normally.',
-        image: '/steps/windows/step1.png'
-      },
-      {
-        title: 'Open Network Stream',
-        text: 'In VLC, click Media in the top menu → then "Open Network Stream".',
-        image: '/steps/windows/step2.png'
-      },
-      {
-        title: 'Paste Your M3U Link',
-        text: 'Copy your M3U URL from our confirmation email and paste it in the URL field.',
-        image: '/steps/windows/step3.png'
-      },
-      {
-        title: 'Click Play',
-        text: 'Press Play. VLC will load all your channels. This may take a few seconds.',
-        image: '/steps/windows/step4.png'
-      },
-      {
-        title: 'Browse Your Channels',
-        text: 'Go to View → Playlist to see all channels organized by category.',
-        image: '/steps/windows/step5.png'
-      },
-      {
-        title: 'Start Watching',
-        text: 'Double-click any channel to start streaming. Enjoy full HD on your PC.',
-        image: '/steps/windows/step6.png'
-      }
-    ],
-    features: [
-      'VLC / IPTV Smarters',
-      'M3U & Xtream Codes',
-      'Windows 10 / 11',
-      '4K playback'
-    ]
-  }
+export const Windows = {
+  id: 'windows',
+  label: 'Windows PC',
+  deviceImage: '/DeviceLogos/Windows.jfif',
+  appName: 'IPTV Smarters Pro',
+  appColor: '#0ea5e9',
+  description:
+    'Experience a premium TV interface on your PC. Compatible with Windows 10 and 11 using our dedicated player.',
+  steps: [
+    {
+      title: 'Download the App',
+      text: 'Click the download link we provided for the **IPTV Smarters Pro .exe** file and run the installer.',
+      image: '/Instructions/WindowsPC/pic.png'
+    },
+    {
+      title: 'Enter Your Credentials',
+      text: 'Input any name (e.g., "MyPC"), then enter the **Username, Password, and Server URL** sent to your email.',
+      image: '/Instructions/WindowsPC/pic2.png'
+    },
+    {
+      title: 'Download Content',
+      text: 'Click **Add User**. The app will now download your Live TV, Movies, and Series categories.',
+      image: '/Instructions/WindowsPC/pic3.png'
+    }
+  ],
+  features: [
+    'Official Smarters Interface',
+    'Xtream Codes API Support',
+    'Windows 10 / 11 Optimized',
+    'Hardware Acceleration'
+  ]
+};

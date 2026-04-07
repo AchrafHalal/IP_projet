@@ -10,32 +10,32 @@ export const MagBox =   {
       {
         title: 'Go to System Settings',
         text: 'Press the Setup button on your MAG remote and navigate to System Settings.',
-        image: '/steps/mag/step1.png'
+        image: '/Instructions/MagBox/pic1.png'
       },
       {
         title: 'Open Servers',
         text: 'Inside System Settings, select Servers then Portals.',
-        image: '/steps/mag/step2.png'
+        image: '/Instructions/MagBox/pic2.png'
       },
       {
         title: 'Enter Portal URL',
         text: 'In the Portal 1 Name field, type any name. In the Portal 1 URL field, paste the URL we sent you.',
-        image: '/steps/mag/step3.png'
+        image: '/Instructions/MagBox/pic3.png'
       },
       {
         title: 'Save and Restart',
         text: 'Press OK to save, then go back and choose Restart Portal.',
-        image: '/steps/mag/step4.png'
+        image: '/Instructions/MagBox/pic4.png'
       },
       {
         title: 'Channels Load Automatically',
         text: 'After restart, your MAG box will connect to our server and load all channels.',
-        image: '/steps/mag/step5.png'
+        image: '/Instructions/MagBox/pic5.png'
       },
       {
         title: 'Done!',
         text: 'Use your MAG remote to browse live TV, movies, and series.',
-        image: '/steps/mag/step6.png'
+        image: '/Instructions/MagBox/pic5.png'
       }
     ],
     features: [
