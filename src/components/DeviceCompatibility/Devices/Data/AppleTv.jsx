@@ -1,7 +1,6 @@
 export const AppleTv =   {
     id: 'appletv',
     label: 'Apple TV',
-    deviceImage: '/DeviceLogos/Apple tv icon.jfif',
     appName: 'Apple TV',
     appColor: '#64748b',
     description:

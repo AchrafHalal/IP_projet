@@ -1,7 +1,6 @@
 export const Windows = {
   id: 'windows',
   label: 'Windows PC',
-  deviceImage: '/DeviceLogos/Windows.jfif',
   appName: 'IPTV Smarters Pro',
   appColor: '#0ea5e9',
   description:

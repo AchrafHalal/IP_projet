@@ -1,7 +1,6 @@
 export const Mac = {
   id: 'mac',
   label: 'Mac',
-  deviceImage: '/DeviceLogos/Mac.jfif',
   appName: 'IPTV Smarters Pro',
   appColor: '#8b5cf6',
   description:

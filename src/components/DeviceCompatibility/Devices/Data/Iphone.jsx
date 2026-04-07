@@ -1,7 +1,6 @@
 export const Iphone =    {
     id: 'ios',
     label: 'iPhone / iPad',
-    deviceImage: '/DeviceLogos/Iphone_Ipad.png',
     appName: 'iPhone & iPad',
     appColor: '#a855f7',
     description:

@@ -1,7 +1,6 @@
 export const AndroidPhone =   {
     id: 'androidphone',
     label: 'Android Phone',
-    deviceImage: '/DeviceLogos/AndroidPhone.png',
     appName: 'Android Phone & Tablet',
     appColor: '#34d399',
     description:

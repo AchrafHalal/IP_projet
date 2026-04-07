@@ -1,7 +1,6 @@
 export const LG =   {
     id: 'lg',
     label: 'LG Smart TV',
-    deviceImage: '/DeviceLogos/LG.png',
     appName: 'LG Smart TV',
     appColor: '#ef4444',
     description:
@@ -10,32 +9,27 @@ export const LG =   {
       {
         title: 'Open LG Content Store',
         text: 'Press Home on your Magic Remote and open the LG Content Store.',
-        image: '/steps/lg/step1.png'
+        image: '/Instructions/LG/pic1.png'
       },
       {
-        title: 'Install SS IPTV',
-        text: 'Search for "SS IPTV" and install the free app.',
-        image: '/steps/lg/step2.png'
+        title: 'Install IPTV',
+        text: 'Search for "IPTV" and install the free app.',
+        image: '/Instructions/LG/pic2.png'
       },
       {
-        title: 'Open SS IPTV',
+        title: 'Open IPTV',
         text: 'Launch SS IPTV from your Home screen.',
-        image: '/steps/lg/step3.png'
+        image: '/Instructions/LG/pic3.png'
       },
       {
-        title: 'Add Your Playlist',
-        text: 'Go to Settings → Playlists → Add Playlist. Choose "Remote" and enter your M3U URL.',
-        image: '/steps/lg/step4.png'
+        title: 'Add Your Credentials',
+        text: 'add the a name of your playlist and the username and the password that we provided after purchase.',
+        image: '/Instructions/LG/pic4.png'
       },
       {
         title: 'Load the Playlist',
         text: 'Tap Update to load all channels. This may take a few seconds.',
-        image: '/steps/lg/step5.png'
-      },
-      {
-        title: 'Start Streaming',
-        text: 'Use your Magic Remote to browse categories and start watching.',
-        image: '/steps/lg/step6.png'
+        image: '/Instructions/LG/pic5.png'
       }
     ],
     features: [

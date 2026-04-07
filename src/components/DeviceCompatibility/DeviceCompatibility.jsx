@@ -97,6 +97,41 @@ function StepCarousel({ steps }) {
 }
 
 // ─────────────────────────────────────────────
+//  YouTube Video Player
+// ─────────────────────────────────────────────
+function YouTubePlayer({ url }) {
+  return (
+    <div
+      style={{
+        position: 'relative',
+        paddingBottom: '56.25%', // 16:9 aspect ratio
+        height: 0,
+        borderRadius: '12px',
+        overflow: 'hidden',
+        marginBottom: '24px',
+        background: '#000',
+      }}
+    >
+      <iframe
+        src={url}
+        title="Installation Tutorial"
+        allowFullScreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          border: 'none',
+          borderRadius: '12px',
+        }}
+      />
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
 //  Main component
 // ─────────────────────────────────────────────
 export default function DeviceCompatibility() {
@@ -182,7 +217,6 @@ export default function DeviceCompatibility() {
                   onClick={() => selectDevice(d)}
                 >
                   <span className="dc-item-icon">
-                    {/* INJECT LUCIDE ICONS HERE */}
                     {getDeviceIcon(d.label)}
                   </span>
                   <span className="dc-item-label">{d.label}</span>
@@ -197,7 +231,6 @@ export default function DeviceCompatibility() {
               
               <div className="dc-card-top">
                 <div className="dc-app-icon">
-                  {/* INJECT LARGE LUCIDE ICON HERE */}
                   {React.cloneElement(getDeviceIcon(activeDevice.label), { size: 40 })}
                 </div>
                 <div className="dc-card-top-text">
@@ -208,11 +241,22 @@ export default function DeviceCompatibility() {
 
               <div className="dc-divider" />
 
+              {/* ── VIDEO TUTORIAL (YouTube) ── */}
+              {activeDevice.vid && (
+                <>
+                  <p className="dc-steps-label">Video Tutorial</p>
+                  <YouTubePlayer url={activeDevice.vid} />
+                  <div className="dc-divider" style={{ marginBottom: '20px' }} />
+                </>
+              )}
+
+              {/* ── INSTALLATION STEPS ── */}
               <p className="dc-steps-label">Installation steps</p>
               <StepCarousel steps={activeDevice.steps || []} />
 
               <div className="dc-divider" style={{ marginTop: '30px', marginBottom: '20px' }} />
 
+              {/* ── APP FEATURES ── */}
               <p className="dc-steps-label">App Features</p>
               <div className="dc-features-grid">
                 {(activeDevice.features || []).map((f, i) => (

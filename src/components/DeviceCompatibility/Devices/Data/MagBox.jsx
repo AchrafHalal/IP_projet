@@ -1,7 +1,6 @@
 export const MagBox =   {
     id: 'mag',
     label: 'MAG Box',
-    deviceImage: '/DeviceLogos/Fire_Stick.png',
     appName: 'MAG Set-Top Box',
     appColor: '#f97316',
     description:

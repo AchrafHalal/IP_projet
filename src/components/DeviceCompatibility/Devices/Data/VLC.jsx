@@ -1,7 +1,6 @@
 export const VLC = {
   id: 'vlc',
   label: 'VLC / Any Player',
-  deviceImage: '/DeviceLogos/VLC.jfif',
   appName: 'VLC Media Player',
   appColor: '#f97316',
   description:
