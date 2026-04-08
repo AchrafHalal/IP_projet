@@ -252,7 +252,7 @@ export default function DeviceCompatibility() {
 
               {/* ── INSTALLATION STEPS ── */}
               <p className="dc-steps-label">Installation steps</p>
-              <StepCarousel steps={activeDevice.steps || []} />
+              <StepCarousel key={activeDevice.label} steps={activeDevice.steps || []} />
 
               <div className="dc-divider" style={{ marginTop: '30px', marginBottom: '20px' }} />
 
