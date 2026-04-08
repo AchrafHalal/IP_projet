@@ -55,7 +55,7 @@ function Hero() {
           </h1>
           
           <p className="hero-subhead">
-            Flawless 4K. Unbeatable Value, and backed by 24/7 support.
+            Enjoy Sports, Movies & Live TV in 4K — Anytime, Anywhere
           </p>
 
           <div className="hero-ctas">
