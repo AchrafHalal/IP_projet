@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from './components/Layout/Layout.jsx';
 
 import Home from "./Pages/Home.jsx";
+import About from './Pages/About';
 import Privacy from "./Pages/Privacy.jsx";
 import Terms from "./Pages/Terms.jsx";
 import Refund from "./Pages/Refund.jsx";
@@ -14,6 +15,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/refund" element={<Refund />} />

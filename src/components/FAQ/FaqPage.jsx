@@ -134,23 +134,6 @@ export default function FaqPage() {
             />
           ))}
         </div>
-
-        {/* FOOTER */}
-        <div className="faq-footer">
-            <p className="faq-footer-text">
-                Still have questions? We're here to help you 24/7.
-            </p>
-
-            <a
-                href="https://wa.me/212XXXXXXXXX"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="faq-btn-whatsapp"
-            >
-                <MessageCircle size={20} /> Contact Us on WhatsApp
-            </a>
-        </div>
-
       </div>
     </section>
   );
