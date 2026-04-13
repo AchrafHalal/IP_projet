@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { ChevronDown, MessageCircle } from "lucide-react"; // Upgraded icons
+import { ChevronDown } from "lucide-react"; 
 import "./FaqStyle.css";
 
 // ─── DATA ─────────────────────────────────────────

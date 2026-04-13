@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Gavel, MonitorOff, Zap, ArrowLeft, AlertTriangle, Globe } from 'lucide-react';
+import {  MonitorOff, Zap, ArrowLeft, AlertTriangle, Globe } from 'lucide-react';
 import './Style.css';
 
 export default function Terms() {

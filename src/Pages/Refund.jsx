@@ -1,6 +1,6 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { RefreshCcw, FileX, CreditCard, ArrowLeft, AlertCircle, ShieldAlert } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { RefreshCcw, FileX, CreditCard, ArrowLeft, ShieldAlert } from 'lucide-react';
 import './Style.css';
 
 export default function Refund() {

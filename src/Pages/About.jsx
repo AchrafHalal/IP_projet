@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Tv, ShieldCheck, Users, ArrowLeft, Globe, Zap, Heart, CheckCircle } from 'lucide-react';
+import { ShieldCheck, ArrowLeft, Globe, Zap, Heart, CheckCircle } from 'lucide-react';
 import './Style.css';
 
 export default function About() {
