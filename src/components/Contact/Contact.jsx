@@ -1,34 +1,44 @@
-import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, MessageCircle, ShieldCheck } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Send, ShieldCheck } from 'lucide-react';
 import './Contact.css';
 
 export default function Contact() {
   const [status, setStatus] = useState({ type: '', msg: '' });
-  const whatsappLink = "https://wa.me/05875114142?text=Support%20Request";
 
-  const handleSecurityCheck = (e) => {
+  // Auto-hide the success/error message after 4 seconds
+  useEffect(() => {
+    if (status.msg) {
+      const timer = setTimeout(() => {
+        setStatus({ type: '', msg: '' });
+      }, 4000); 
+      return () => clearTimeout(timer); 
+    }
+  }, [status.msg]);
+
+  const handleSubscribe = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
+    const email = formData.get('email');
 
-    // 1. HONEYPOT CHECK (Invisible to humans, caught by bots)
-    if (data.website_hp) {
-      console.warn("Bot detected.");
-      return; 
+    if (formData.get('website_hp')) return;
+
+    try {
+      const response = await fetch('http://localhost:5000/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setStatus({ type: 'success', msg: 'Successfully subscribed to updates!' });
+        e.target.reset();
+      } else {
+        setStatus({ type: 'error', msg: 'Failed to subscribe. Please try again.' });
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      setStatus({ type: 'error', msg: 'Network error. Make sure your backend is running.' });
     }
-
-    // 2. JS INJECTION FILTER (XSS Prevention)
-    const xssPattern = /<script\b[^>]*>([\s\S]*?)<\/script>|javascript:|on\w+=/gi;
-    const isMalicious = Object.values(data).some(val => xssPattern.test(val));
-
-    if (isMalicious) {
-      setStatus({ type: 'error', msg: 'Security error: Scripting tags are not allowed.' });
-      return;
-    }
-
-    // 3. SUCCESS LOGIC (Placeholder for your API call)
-    setStatus({ type: 'success', msg: 'Message sent! Our team will contact you soon.' });
-    e.target.reset();
   };
 
   return (
@@ -36,69 +46,31 @@ export default function Contact() {
       <div className="contact-modern-container">
         
         <header className="contact-modern-header">
-          <span className="contact-modern-badge">Support Center</span>
-          <h2>Get in Touch</h2>
-          <p>Professional support for the Swedish streaming market. We respond within 24 hours.</p>
+          {/* Updated badge and text */}
+          <span className="contact-modern-badge">Newsletter</span>
+          <h2>Stay in the Loop</h2>
+          <p>Join our newsletter for the latest channel updates and Swedish market offers.</p>
         </header>
 
         <div className="contact-modern-card">
-          {/* FORM AREA */}
-          <form className="contact-modern-form" onSubmit={handleSecurityCheck}>
-            
-            {/* Honeypot Field (Hidden from users) */}
+          <form className="newsletter-form" onSubmit={handleSubscribe}>
             <input type="text" name="website_hp" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
 
-            <div className="contact-form-row">
-              <div className="form-input-group">
-                <label>Full Name</label>
-                <input type="text" name="name" placeholder="John Doe" required />
-              </div>
-              <div className="form-input-group">
-                <label>Email Address</label>
-                <input type="email" name="email" placeholder="john@example.se" required />
-              </div>
+            <div className="newsletter-input-group">
+              <Mail className="input-icon" size={20} />
+              <input type="email" name="email" placeholder="Enter your email address..." required />
+              <button type="submit" className="newsletter-btn">
+                Subscribe <Send size={16} />
+              </button>
             </div>
-
-            <div className="form-input-group">
-              <label>Subject</label>
-              <input type="text" name="subject" placeholder="Technical Support / Billing" required />
-            </div>
-
-            <div className="form-input-group">
-              <label>Message</label>
-              <textarea name="message" rows="5" placeholder="How can we help you today?" required></textarea>
-            </div>
-
-            <button type="submit" className="contact-modern-btn">
-              Send Secure Message <Send size={16} />
-            </button>
 
             {status.msg && (
               <div className={`form-status ${status.type}`}>
-                {status.type === 'success' ? <ShieldCheck size={18} /> : null}
+                <ShieldCheck size={18} />
                 {status.msg}
               </div>
             )}
           </form>
-
-          {/* CONTACT INFO BAR */}
-          <div className="contact-modern-footer">
-            <div className="contact-footer-item">
-              <MapPin size={18} />
-              <span>Nora, Sweden</span>
-            </div>
-            <div className="contact-footer-item">
-              <Phone size={18} />
-              <a href="tel:0587-5114142">0587-5114142</a>
-            </div>
-            <div className="contact-footer-item">
-              <Mail size={18} />
-              <a href="mailto:contact@Svensk4kStream.se">Email Support</a>
-            </div>
-            <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="contact-whatsapp-link">
-              <MessageCircle size={18} /> WhatsApp Support
-            </a>
-          </div>
         </div>
 
       </div>

@@ -1,0 +1,59 @@
+.floating-wa-icon {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: none; 
+  border: none;
+  box-shadow: none;
+  z-index: 9999; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Bouncy spring animation for popping in and out */
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.floating-wa-icon .wa-svg {
+  width: 60px;
+  height: 60px;
+  transition: all 0.3s ease;
+}
+
+/* STATE: Hidden at the top of the page */
+.floating-wa-icon.hidden {
+  opacity: 0;
+  visibility: hidden;
+  /* Shrinks and drops down slightly to hide */
+  transform: scale(0.5) translateY(30px); 
+  /* Prevents the invisible icon from being clicked */
+  pointer-events: none; 
+}
+
+/* STATE: Visible when user scrolls down */
+.floating-wa-icon.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+/* Hover effects (Only applies when visible) */
+.floating-wa-icon.visible:hover {
+  transform: scale(1.08) translateY(-3px);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .floating-wa-icon {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .floating-wa-icon .wa-svg {
+    width: 45px;
+    height: 45px;
+  }
+}
