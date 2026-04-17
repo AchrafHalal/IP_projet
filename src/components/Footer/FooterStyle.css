@@ -1,16 +1,18 @@
 :root {
-  --nav-bg: #0B0F19; /* Use the exact background of your Navbar */
-  --accent-blue: #3b82f6;
-  --muted-text: #94a3b8;
-  --border-line: rgba(255, 255, 255, 0.05);
+  /* Using your established professional color palette */
+  --bg-color: #ffffff;
+  --text-main: #111827;    
+  --text-muted: #6b7280; 
+  --primary: #2563eb; 
+  --border-light: #e5e7eb; /* Subtle gray for structural lines */
 }
 
-.footer-dark {
-  background: var(--nav-bg);
-  color: #ffffff;
+.footer-light {
+  background: var(--bg-color);
+  color: var(--text-main);
   padding: 80px 24px 30px 24px;
   font-family: "Inter", -apple-system, sans-serif;
-  border-top: 1px solid var(--border-line);
+  border-top: 1px solid var(--border-light);
 }
 
 .fd-container {
@@ -32,14 +34,14 @@
   font-weight: 800;
   letter-spacing: -1.2px;
   margin-bottom: 12px;
-  color: #ffffff;
+  color: var(--text-main);
 }
 
-.fd-logo span { color: var(--accent-blue); }
+.fd-logo span { color: var(--primary); }
 
 .fd-desc {
   font-size: 13.5px;
-  color: var(--muted-text);
+  color: var(--text-muted);
   line-height: 1.6;
   margin-bottom: 22px;
 }
@@ -48,20 +50,20 @@
 
 .fd-social-icon {
   width: 36px; height: 36px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #f3f4f6; /* Light gray background */
   display: flex; align-items: center; justify-content: center;
-  border-radius: 8px; color: var(--muted-text); transition: 0.2s;
+  border-radius: 8px; color: var(--text-muted); transition: 0.2s;
 }
 
 .fd-social-icon:hover {
-  background: var(--accent-blue);
-  color: #fff;
+  background: var(--primary);
+  color: #ffffff;
 }
 
-/* LINKS LINEUP (Tight Spacing) */
+/* LINKS LINEUP */
 .fd-links-main {
   display: flex;
-  gap: 70px; /* Reduced gap for proximity */
+  gap: 70px; 
   flex: 1.5;
   justify-content: center;
 }
@@ -72,8 +74,7 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 22px;
-  color: #fff;
-  opacity: 0.9;
+  color: var(--text-main);
 }
 
 .fd-column ul {
@@ -83,14 +84,14 @@
 
 .fd-column a {
   font-size: 14px;
-  color: var(--muted-text);
+  color: var(--text-muted);
   text-decoration: none;
   transition: 0.2s;
 }
 
 .fd-column a:hover {
-  color: #ffffff;
-  transform: translateX(3px); /* Match navbar subtle interaction */
+  color: var(--primary);
+  transform: translateX(3px); 
 }
 
 /* OFFICE CARD REDESIGN */
@@ -105,30 +106,31 @@
 }
 
 .fd-office-icon {
-  color: var(--accent-blue);
+  color: var(--primary);
   flex-shrink: 0;
 }
 
 .fd-office-row p, .fd-office-row a {
   font-size: 13.5px;
-  color: var(--muted-text);
+  color: var(--text-muted);
   margin: 0;
   text-decoration: none;
   line-height: 1.4;
+  transition: 0.2s;
 }
 
-.fd-office-row a:hover { color: #fff; }
+.fd-office-row a:hover { color: var(--primary); }
 
 /* COPYRIGHT */
 .fd-bottom {
   max-width: 1200px;
   margin: 80px auto 0;
   padding-top: 25px;
-  border-top: 1px solid var(--border-line);
+  border-top: 1px solid var(--border-light);
   text-align: center;
 }
 
-.fd-bottom p { font-size: 12px; color: #475569; }
+.fd-bottom p { font-size: 12px; color: var(--text-muted); }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {

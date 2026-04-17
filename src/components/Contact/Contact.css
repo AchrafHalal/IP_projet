@@ -1,24 +1,24 @@
 /* ── Section Wrapper ── */
 .contact-modern {
-  background: #FAFAFB; /* bj-section match */
-  padding: 100px 20px; 
-  font-family: "Inter", sans-serif;
+  background: #FAFAFB; 
+  padding: 80px 20px; 
+  font-family: "Inter", -apple-system, sans-serif;
 }
 
 .contact-modern-container {
-  max-width: 1060px; /* bj-panel match */
+  max-width: 760px; 
   margin: 0 auto;
 }
 
 /* ── Header ── */
 .contact-modern-header {
   text-align: center;
-  margin-bottom: 52px;
+  margin-bottom: 40px;
 }
 
 .contact-modern-badge {
   display: inline-block;
-  background-color: rgba(0, 26, 70, 0.08); /* bj-tag match */
+  background-color: rgba(0, 26, 70, 0.08); 
   color: #001A46; 
   padding: 6px 16px; 
   border-radius: 50px; 
@@ -29,105 +29,95 @@
 }
 
 .contact-modern-header h2 {
-  font-size: clamp(32px, 5vw, 46px); /* bj-title match */
+  font-size: clamp(28px, 5vw, 40px); 
   font-weight: 800;
   color: #181818;
   margin: 0;
-  letter-spacing: -1.5px;
-}
-
-.contact-modern-header h2 span {
-  color: #3b82f6;
+  letter-spacing: -1px;
 }
 
 .contact-modern-header p {
   font-size: 16px;
   color: #555555;
   margin-top: 12px;
+  line-height: 1.5;
 }
 
 /* ── The Modern Card ── */
 .contact-modern-card {
   background: #ffffff;
-  border-radius: 20px; /* bj-card radius */
+  border-radius: 20px; 
   border: 1px solid #e2e8f0;
   box-shadow: 0 10px 30px rgba(0, 26, 70, 0.04);
   overflow: hidden;
-  max-width: 850px;
-  margin: 0 auto;
 }
 
-.contact-modern-form {
+.newsletter-form {
   padding: 40px;
+}
+
+/* ── Inline Input Group ── */
+.newsletter-input-group {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.contact-form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.form-input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.form-input-group label {
-  font-size: 13px;
-  font-weight: 700;
-  color: #001A46;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.contact-modern-form input, 
-.contact-modern-form textarea {
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1.5px solid #e2e8f0;
+  align-items: center;
   background: #ffffff;
-  font-family: inherit;
-  font-size: 15px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 6px;
   transition: all 0.2s;
 }
 
-.contact-modern-form input:focus, 
-.contact-modern-form textarea:focus {
-  outline: none;
-  border-color: #001A46; /* Navy focus */
-  background: rgba(0, 26, 70, 0.02);
+.newsletter-input-group:focus-within {
+  border-color: #001A46;
+  box-shadow: 0 0 0 4px rgba(0, 26, 70, 0.05);
 }
 
-/* ── Submit Button (CTA Sync) ── */
-.contact-modern-btn {
+.input-icon {
+  color: #94a3b8;
+  margin-left: 12px;
+  margin-right: 8px;
+}
+
+.newsletter-input-group input {
+  flex: 1;
+  border: none;
+  padding: 12px 8px;
+  font-size: 15px;
+  font-family: inherit;
+  background: transparent;
+  outline: none;
+  color: #111827;
+}
+
+.newsletter-input-group input::placeholder {
+  color: #94a3b8;
+}
+
+/* ── Submit Button ── */
+.newsletter-btn {
   background: #001A46;
   color: #fff;
-  padding: 16px;
-  border-radius: 12px;
+  padding: 12px 24px;
+  border-radius: 8px;
   font-weight: 700;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  gap: 8px;
   transition: all 0.2s;
-  margin-top: 10px;
+  white-space: nowrap;
 }
 
-.contact-modern-btn:hover {
+.newsletter-btn:hover {
   background: #002266;
-  transform: translateY(-1px);
 }
 
 /* ── Security/Success Message ── */
 .form-status {
+  margin-top: 16px;
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
   display: flex;
@@ -138,44 +128,30 @@
 .form-status.success { background: #f0fdf4; color: #16a34a; }
 .form-status.error { background: #fef2f2; color: #dc2626; }
 
-/* ── Footer Info Bar ── */
-.contact-modern-footer {
-  background: rgba(0, 26, 70, 0.04);
-  border-top: 1px solid #f1f5f9;
-  padding: 24px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.contact-footer-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  color: #555555;
-}
-
-.contact-footer-item svg { color: #001A46; }
-
-.contact-footer-item a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.contact-whatsapp-link {
-  color: #16a34a; /* WhatsApp Green sync */
-  text-decoration: none;
-  font-weight: 800;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-@media (max-width: 820px) {
-  .contact-form-row { grid-template-columns: 1fr; }
-  .contact-modern-footer { flex-direction: column; align-items: flex-start; gap: 15px; }
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .newsletter-input-group {
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    background: transparent;
+    gap: 12px;
+  }
+  .newsletter-input-group:focus-within {
+    box-shadow: none;
+  }
+  .newsletter-input-group input {
+    width: 100%;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: #ffffff;
+  }
+  .input-icon { display: none; }
+  .newsletter-btn { 
+    width: 100%; 
+    justify-content: center;
+    padding: 14px; 
+    border-radius: 12px; 
+  }
 }

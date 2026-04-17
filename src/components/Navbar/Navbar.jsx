@@ -32,20 +32,22 @@ function Navbar() {
 
           {/* 1. Logo Section */}
           <div className="navbar-logo">
-            <a href="#Hero" onClick={closeMobileMenu}>SvenskStream</a>
+            <a href="/#Hero" onClick={closeMobileMenu}>
+              SvenskStream<span className="logo-dot">.</span>
+            </a>
           </div>
 
           {/* 2. Desktop Links (Hidden on Mobile) */}
           <ul className="navbar-links">
-            <li><a href="#Pricing">Pricing</a></li>
-            <li><a href="#BuyerJourney">How it Works</a></li>
-            <li><a href="#compatibility">Devices</a></li>
-            <li><a href="#FAQ">FAQ</a></li>
+            <li><a href="/#Pricing">Pricing</a></li>
+            <li><a href="/#BuyerJourney">How it Works</a></li>
+            <li><a href="/#compatibility">Devices</a></li>
+            <li><a href="/#FAQ">FAQ</a></li>
           </ul>
 
           {/* 3. Desktop CTA Button (Hidden on Mobile) */}
           <div className="navbar-cta">
-            <a href="#Pricing" className="btn-primary">
+            <a href="/#Pricing" className="btn-primary">
               Get Started
             </a>
           </div>
@@ -61,10 +63,10 @@ function Navbar() {
       {/* 5. MOBILE MENU DROPDOWN */}
       <div className={click ? "mobile-menu active" : "mobile-menu"}>
         <ul className="mobile-links">
-          <li><a href="#Pricing" onClick={closeMobileMenu}>Pricing</a></li>
-          <li><a href="#BuyerJourney" onClick={closeMobileMenu}>How it Works</a></li>
-          <li><a href="#compatibility" onClick={closeMobileMenu}>Devices</a></li>
-          <li><a href="#FAQ" onClick={closeMobileMenu}>FAQ</a></li>
+          <li><a href="/#Pricing" onClick={closeMobileMenu}>Pricing</a></li>
+          <li><a href="/#BuyerJourney" onClick={closeMobileMenu}>How it Works</a></li>
+          <li><a href="/#compatibility" onClick={closeMobileMenu}>Devices</a></li>
+          <li><a href="/#FAQ" onClick={closeMobileMenu}>FAQ</a></li>
         </ul>
 
         {/* The "Sneaky" In-Menu Promo Box */}
