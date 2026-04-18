@@ -1,23 +1,23 @@
+
 /* --- BASE WRAPPER --- */
-/* Fixed position keeps it at the top while scrolling */
 .navbar-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  padding-top: 20px; 
-  transition: all 0.4s ease-in-out; /* Smooth animation for everything */
+  padding-top: 20px;
+  transition: all 0.4s ease-in-out;
 }
 
-/* --- DEFAULT STATE (Top of page, like Screenshot 2) --- */
+/* --- DEFAULT STATE --- */
 .navbar-container {
-  width: 95%; /* Wider initial state */
+  width: 95%;
   max-width: 1400px;
   height: 65px;
-  background: transparent; /* Blends into the hero background */
+  background: transparent;
   border-radius: 0px;
   display: flex;
   align-items: center;
@@ -25,19 +25,15 @@
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* --- SCROLLED STATE (Floating Pill, like Screenshot 3) --- */
-.navbar-wrapper.scrolled {
-  padding-top: 15px; /* Adjusts top spacing */
-}
-
+/* --- SCROLLED STATE --- */
 .navbar-wrapper.scrolled .navbar-container {
-  width: 75%; /* Shrinks down */
-  background: #ffffff; /* Solid white background */
-  border-radius: 40px; /* Pill shape */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow */
+  width: 75%;
+  background: var(--card-bg);
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* --- CONTENT ALIGNMENT --- */
+/* --- CONTENT --- */
 .navbar-content {
   width: 90%;
   display: flex;
@@ -50,20 +46,18 @@
   text-decoration: none;
   font-weight: 800;
   font-size: 22px;
-  color: #181818; /* 30% Palette - Dark text */
-  transition: color 0.3s ease;
+  color: var(--text-main);
 }
 
-/* Add this new rule for the blue dot */
 .navbar-logo .logo-dot {
-  color: #2563eb; /* Your modern blue accent color */
+  color: var(--primary);
 }
 
-/* --- LINKS & HOVER EFFECT --- */
+/* --- LINKS --- */
 .navbar-links {
   display: flex;
   list-style: none;
-  gap: 5px; /* Tighter gap to allow for the background highlight */
+  gap: 5px;
   margin: 0;
   padding: 0;
 }
@@ -71,100 +65,89 @@
 .navbar-links a {
   text-decoration: none;
   font-size: 15px;
-  color: #181818; /* 30% Palette */
+  color: var(--text-main);
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 20px;
   transition: all 0.2s ease;
 }
 
-/* Screenshot 3: The pill background on hover */
+/* hover */
 .navbar-links a:hover {
-  background-color: #FAFAFB; /* 60% Palette - Light grayish background */
-  color: #001A46; /* 10% Palette - Accent blue text */
+  background-color: var(--bg-secondary);
+  color: var(--primary);
 }
 
 /* --- CTA BUTTON --- */
 .btn-primary {
-  background: #001A46; /* 10% Palette - Primary Accent */
-  color: #ffffff;
+  background: var(--primary);
+  color: #fff;
   text-decoration: none;
   padding: 12px 24px;
-  border-radius: 30px; /* Fully rounded */
+  border-radius: 30px;
   font-weight: 600;
   font-size: 15px;
-  transition: background 0.3s ease, transform 0.2s ease;
-  display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: #181818; /* Switches to dark color on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+  filter: brightness(0.9);
+  transform: translateY(-2px);
 }
 
-/* Keep all your existing CSS at the top exactly as it is... */
-
-/* --- ADD THESE NEW CLASSES BELOW YOUR EXISTING ONES --- */
-
+/* --- MOBILE ICON --- */
 .menu-icon {
-  display: none; /* Hidden on desktop */
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-main);
 }
 
+/* --- MOBILE MENU --- */
 .mobile-menu {
-  display: none; /* Hidden on desktop */
+  display: none;
 }
 
-/* --- MOBILE RESPONSIVENESS & HAMBURGER MENU --- */
 @media screen and (max-width: 968px) {
-  
-  /* Prevent the pill from shrinking too much on tiny mobile screens */
+
   .navbar-wrapper.scrolled .navbar-container {
     width: 95%;
     border-radius: 25px;
   }
 
-  /* Hide Desktop Elements */
-  .navbar-links, .navbar-cta {
+  .navbar-links,
+  .navbar-cta {
     display: none;
   }
 
-  /* Show Hamburger Icon */
   .menu-icon {
     display: flex;
     align-items: center;
-    font-size: 24px;
-    cursor: pointer;
-    color: #181818;
-    z-index: 1001; /* Keeps it clickable */
   }
 
-  /* --- MOBILE DROPDOWN CONTAINER --- */
   .mobile-menu {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 85px; /* Sits just below the floating pill */
+    top: 85px;
     left: 50%;
     transform: translateX(-50%) translateY(-20px);
     width: 90%;
-    background: #ffffff;
+    background: var(--card-bg);
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
     padding: 25px;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    z-index: 999;
+    transition: all 0.3s ease;
   }
 
-  /* The class that slides it into view when clicked */
   .mobile-menu.active {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
   }
 
-  /* Mobile Links Styling */
   .mobile-links {
     list-style: none;
     padding: 0;
@@ -172,72 +155,62 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border-bottom: 1px solid #eaeaea; /* Divider line before promo */
+    border-bottom: 1px solid var(--border-color);
     padding-bottom: 25px;
   }
 
   .mobile-links a {
     text-decoration: none;
-    color: #181818;
+    color: var(--text-main);
     font-size: 18px;
     font-weight: 600;
   }
 
-  /* --- THE SNEAKY PROMO BOX --- */
+  /* promo */
   .mobile-promo-box {
-    background-color: #FAFAFB; /* Subtle grey background */
-    border: 1px solid #eaeaea;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
   }
 
   .promo-badge {
-    background-color: #FFE5E5;
-    color: #D32F2F;
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
     font-size: 11px;
     font-weight: 800;
     text-transform: uppercase;
     padding: 4px 10px;
     border-radius: 20px;
-    margin-bottom: 10px;
   }
 
   .mobile-promo-box h4 {
-    margin: 0 0 8px 0;
-    color: #001A46;
+    color: var(--primary);
     font-size: 18px;
     font-weight: 800;
   }
 
   .mobile-promo-box p {
-    margin: 0 0 15px 0;
+    color: var(--text-muted);
     font-size: 13px;
-    color: #666;
-    line-height: 1.4;
   }
 
   .btn-promo-cta {
-    background-color: #001A46;
+    background-color: var(--primary);
     color: white;
-    text-decoration: none;
     padding: 12px 0;
     width: 100%;
     text-align: center;
     border-radius: 30px;
     font-weight: 700;
-    font-size: 15px;
-    transition: background 0.3s ease;
   }
 
   .btn-promo-cta:hover {
-    background-color: #181818;
+    filter: brightness(0.9);
   }
 }
 
-/* Removes the default blue highlight box when tapping on mobile */
+/* tap highlight fix */
 a, .menu-icon, .btn-primary, .btn-promo-cta {
   -webkit-tap-highlight-color: transparent;
 }

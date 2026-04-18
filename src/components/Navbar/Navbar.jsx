@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import DarkMode from '../DarkMode/DarkMode.jsx';
 import './Navbar.css';
 
 function Navbar() {
@@ -43,6 +44,7 @@ function Navbar() {
             <li><a href="/#BuyerJourney">How it Works</a></li>
             <li><a href="/#compatibility">Devices</a></li>
             <li><a href="/#FAQ">FAQ</a></li>
+            <li><DarkMode/></li>
           </ul>
 
           {/* 3. Desktop CTA Button (Hidden on Mobile) */}

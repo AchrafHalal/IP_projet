@@ -11,9 +11,12 @@
 :root {
   /* Use a professional color palette */
   --bg-color: #ffffff;
-  --text-main: #111827;    /* Deep charcoal, easier on eyes than pure black */
-  --text-muted: #6b7280;  /* For secondary text */
-  --primary: #2563eb;     /* Modern Blue */
+  --bg-secondary: #f9fafb;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --primary: #2563eb;
+  --border-color: #e5e7eb;
+  --card-bg: #ffffff;    /* Modern Blue */
   
   /* 8pt Grid System Variables */
   --space-1: 8px;
@@ -21,6 +24,16 @@
   --space-3: 24px;
   --space-4: 32px;
   --space-8: 64px;
+}
+
+[data-theme='dark'] {
+  --bg-color: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #3b82f6;
+  --border-color: #334155;
+  --card-bg: #1e293b;
 }
 
 html {

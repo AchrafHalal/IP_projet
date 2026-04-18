@@ -1,66 +1,68 @@
+
 /* --- BASE SETUP & GRID BACKGROUND --- */
 .hero-clean {
   position: relative;
   width: 100%;
   min-height: 100svh;
-  background-color: #FAFAFB; /* 60% Palette Background */
+  background-color: var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-top: clamp(80px, 12vh, 140px); 
+  padding-top: clamp(80px, 12vh, 140px);
 }
 
+/* GRID BACKGROUND */
 .dot-grid-base {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-image: radial-gradient(#d1d5db 0.5px, transparent 0.5px);
-  background-size: 20px 20px; 
-  opacity: 0.6;
+  inset: 0;
+  background-image: radial-gradient(var(--border-color) 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  opacity: 0.5;
   z-index: 1;
 }
 
 .dot-grid-highlight {
   position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background-image: radial-gradient(#001A46 1px, transparent 1px); 
+  inset: 0;
+  background-image: radial-gradient(var(--primary) 1px, transparent 1px);
   background-size: 20px 20px;
   z-index: 2;
   -webkit-mask-image: radial-gradient(circle 120px at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%);
   mask-image: radial-gradient(circle 120px at var(--mouse-x) var(--mouse-y), black 0%, transparent 100%);
 }
 
+/* CONTENT WRAPPER */
 .hero-content-wrapper {
   position: relative;
   z-index: 3;
   width: 90%;
-  max-width: 1000px; /* Narrowed to keep the centered text from stretching too far */
+  max-width: 1000px;
   display: flex;
-  flex-direction: column; /* Stacks elements vertically */
-  align-items: center;    /* Centers everything horizontally */
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 40px;
 }
 
-/* --- CENTERED FUNNEL --- */
 .hero-text-side {
   width: 100%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers the internal elements */
-  text-align: center;  /* Centers the actual text */
+  align-items: center;
+  text-align: center;
 }
 
-/* --- 1. TRUST FACTOR (Avatars & Stars) --- */
+/* --- TRUST FACTOR --- */
 .trust-indicator {
   display: flex;
   align-items: center;
   gap: 15px;
-  background: white;
+  background: var(--card-bg);
   padding: 8px 20px;
-  border-radius: 40px; /* Pill shape */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border-radius: 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
   margin-bottom: clamp(15px, 3vh, 30px);
 }
 
@@ -73,58 +75,69 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 2px solid white; /* Creates the overlap cutout */
+  border: 2px solid var(--bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   font-size: 12px;
-  color: white;
-  margin-left: -12px; /* Pulls them together */
+  color: var(--text-main);
+  margin-left: -12px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.avatar-1 { background-color: #001A46; margin-left: 0; } 
-.avatar-2 { background-color: #181818; } 
-.avatar-3 { background-color: #d1d5db; color: #181818; } 
-.avatar-4 { background-color: #00B67A; } 
+
+.avatar-1 { background-color: #001A46; margin-left: 0; }
+.avatar-2 { background-color: #181818; }
+.avatar-3 { background-color: var(--border-color); color: var(--text-main); }
+.avatar-4 { background-color: #00B67A; }
 
 .trust-text-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Keeps the internal text aligned left within the pill */
+  align-items: flex-start;
   font-size: 14px;
-  color: #555;
+  color: var(--text-muted);
 }
-.trust-text-container strong { color: #181818; }
-.stars { color: #FFB400; display: flex; gap: 2px; font-size: 14px; margin-top: 2px; }
 
-/* --- 2. HEADINGS --- */
+.trust-text-container strong {
+  color: var(--text-main);
+}
+
+.stars {
+  color: #FFB400;
+  display: flex;
+  gap: 2px;
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* --- HEADINGS --- */
 .hero-headline {
-  /* Text scales smoothly from 40px on small screens to 72px on large ones */
   font-size: clamp(40px, 5vw, 72px);
   font-weight: 800;
-  color: #181818;
+  color: var(--text-main);
   line-height: 1.05;
-  margin: 0 0 clamp(10px, 2vh, 20px) 0;
+  margin-bottom: clamp(10px, 2vh, 20px);
   letter-spacing: -2px;
 }
-.accent-text { color: #001A46; }
+
+.accent-text {
+  color: var(--primary);
+}
 
 .hero-subhead {
-  /* Text scales from 16px to 20px */
   font-size: clamp(16px, 1.5vw, 20px);
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.5;
-  /* Bottom margin shrinks automatically if the screen is too short */
-  margin: 0 auto clamp(20px, 4vh, 40px) auto; 
+  margin: 0 auto clamp(20px, 4vh, 40px);
   max-width: 650px;
 }
 
-/* --- 3. DUAL CTAS --- */
+/* --- BUTTONS --- */
 .hero-ctas {
   display: flex;
   align-items: center;
-  justify-content: center; /* Pushes the buttons to the middle */
+  justify-content: center;
   gap: 20px;
   margin-bottom: clamp(20px, 4vh, 40px);
   flex-wrap: wrap;
@@ -135,53 +148,60 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background-color: #181818;
-  color: white;
+  background-color: var(--card-bg);
+  color: var(--primary);
   padding: 18px 36px;
   border-radius: 40px;
   font-size: 18px;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 10px 20px rgba(24, 24, 24, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
+
 .btn-whatsapp-massive:hover {
-  background-color: #001A46;
+  background-color: var(--primary);
+  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 15px 25px rgba(0, 26, 70, 0.3);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
 }
-.icon-large { font-size: 24px; color: #25D366; }
+
+.icon-large {
+  font-size: 24px;
+  color: #25D366;
+}
 
 .btn-secondary-ghost {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: transparent;
-  color: #181818;
-  padding: 16px 34px; 
-  border: 2px solid #d1d5db;
+  color: var(--text-main);
+  padding: 16px 34px;
+  border: 2px solid var(--border-color);
   border-radius: 40px;
   font-size: 18px;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 .btn-secondary-ghost:hover {
-  border-color: #181818;
-  background: rgba(24, 24, 24, 0.03);
-  color: #001A46;
+  border-color: var(--primary);
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
   transform: translateY(-3px);
 }
 
-/* --- 4. MICROCOPY GUARANTEES --- */
+/* --- GUARANTEES --- */
 .hero-guarantees {
   display: flex;
-  justify-content: center; /* Centers the entire row */
+  justify-content: center;
   gap: 20px;
   width: 100%;
-  margin-top: 5px; 
-  flex-wrap: nowrap; 
-  white-space: nowrap; 
+  margin-top: 5px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .guarantee-item {
@@ -191,50 +211,58 @@
 }
 
 .guarantee-icon {
-  color: #001A46; 
+  color: var(--primary);
   font-size: 22px;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .guarantee-title {
   font-weight: 600;
-  color: #181818;
+  color: var(--text-main);
   font-size: 15px;
   margin: 0;
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+/* --- MOBILE --- */
 @media (max-width: 968px) {
   .hero-content-wrapper {
     padding-top: 40px;
   }
-  .hero-headline { font-size: 50px; }
-  .hero-ctas { flex-direction: column; width: 100%; }
-  .btn-whatsapp-massive, .btn-secondary-ghost { width: 100%; justify-content: center; }
-  
-  .hero-guarantees { 
-    flex-wrap: wrap; 
-    white-space: normal; 
+
+  .hero-headline {
+    font-size: 50px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-whatsapp-massive,
+  .btn-secondary-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-guarantees {
+    flex-wrap: wrap;
+    white-space: normal;
   }
 }
 
-/* On very small screens, let them stack */
 @media (max-width: 600px) {
   .hero-guarantees {
     flex-direction: column;
-    align-items: center; 
-    padding-left: 0;
+    align-items: center;
   }
-  
-  /* --- NEW BUTTON FIXES FOR MOBILE --- */
+
   .btn-whatsapp-massive {
-    font-size: 15px; /* Scaled down slightly so it fits on one line */
+    font-size: 15px;
     padding: 16px 20px;
-    justify-content: center; /* Ensures the icon and text stay glued together in the middle */
   }
-  
+
   .btn-secondary-ghost {
-    font-size: 15px; /* Match the primary button size */
-    padding: 14px 20px; /* Account for the 2px border */
+    font-size: 15px;
+    padding: 14px 20px;
   }
 }

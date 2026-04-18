@@ -1,6 +1,6 @@
 /* ── Section Wrapper ── */
 .contact-modern {
-  background: #FAFAFB; 
+  background: var(--bg-color); 
   padding: 80px 20px; 
   font-family: "Inter", -apple-system, sans-serif;
 }
@@ -18,37 +18,38 @@
 
 .contact-modern-badge {
   display: inline-block;
-  background-color: rgba(0, 26, 70, 0.08); 
-  color: #001A46; 
+  background-color: var(--bg-secondary); 
+  color: var(--primary); 
   padding: 6px 16px; 
   border-radius: 50px; 
   font-size: 0.85rem;
   font-weight: 700;
   margin-bottom: 16px; 
   text-transform: uppercase;
+  border: 1px solid var(--border-color);
 }
 
 .contact-modern-header h2 {
   font-size: clamp(28px, 5vw, 40px); 
   font-weight: 800;
-  color: #181818;
+  color: var(--text-main);
   margin: 0;
   letter-spacing: -1px;
 }
 
 .contact-modern-header p {
   font-size: 16px;
-  color: #555555;
+  color: var(--text-muted);
   margin-top: 12px;
   line-height: 1.5;
 }
 
 /* ── The Modern Card ── */
 .contact-modern-card {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: 20px; 
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px rgba(0, 26, 70, 0.04);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   overflow: hidden;
 }
 
@@ -60,20 +61,20 @@
 .newsletter-input-group {
   display: flex;
   align-items: center;
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border-color);
   border-radius: 12px;
   padding: 6px;
   transition: all 0.2s;
 }
 
 .newsletter-input-group:focus-within {
-  border-color: #001A46;
-  box-shadow: 0 0 0 4px rgba(0, 26, 70, 0.05);
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
 .input-icon {
-  color: #94a3b8;
+  color: var(--text-muted);
   margin-left: 12px;
   margin-right: 8px;
 }
@@ -86,16 +87,16 @@
   font-family: inherit;
   background: transparent;
   outline: none;
-  color: #111827;
+  color: var(--text-main);
 }
 
 .newsletter-input-group input::placeholder {
-  color: #94a3b8;
+  color: var(--text-muted);
 }
 
 /* ── Submit Button ── */
 .newsletter-btn {
-  background: #001A46;
+  background: var(--primary);
   color: #fff;
   padding: 12px 24px;
   border-radius: 8px;
@@ -110,7 +111,7 @@
 }
 
 .newsletter-btn:hover {
-  background: #002266;
+  opacity: 0.9;
 }
 
 /* ── Security/Success Message ── */
@@ -125,6 +126,7 @@
   gap: 8px;
 }
 
+/* Khllit l-alwan dial success/error kima homa hit standard */
 .form-status.success { background: #f0fdf4; color: #16a34a; }
 .form-status.error { background: #fef2f2; color: #dc2626; }
 
@@ -142,10 +144,10 @@
   }
   .newsletter-input-group input {
     width: 100%;
-    border: 1.5px solid #e2e8f0;
+    border: 1.5px solid var(--border-color);
     border-radius: 12px;
     padding: 14px 16px;
-    background: #ffffff;
+    background: var(--card-bg);
   }
   .input-icon { display: none; }
   .newsletter-btn { 

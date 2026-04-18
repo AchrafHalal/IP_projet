@@ -1,8 +1,9 @@
+
 /* --- CONTAINER --- */
 .carousel-section {
   width: 100%;
-  background-color: #FAFAFB; /* Matches your Hero background */
-  padding: 40px 0 60px 0;
+  background-color: var(--bg-color);
+  padding: 40px 0 60px;
   overflow: hidden;
   position: relative;
 }
@@ -13,12 +14,12 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 2.5px;
-  color: #999; /* Soft grey text */
+  color: var(--text-muted);
   margin-bottom: 35px;
   text-transform: uppercase;
 }
 
-/* --- CAROUSEL TRACK --- */
+/* --- WRAPPER --- */
 .carousel-wrapper {
   max-width: 1400px;
   margin: 0 auto;
@@ -28,22 +29,21 @@
   align-items: center;
 }
 
+/* --- TRACK --- */
 .carousel-track {
   display: flex;
-  /* 8 unique logos * 200px width = 1600px. Duplicated = 3200px */
-  width: calc(200px * 16); 
-  animation: scroll 35s linear infinite; 
+  width: calc(200px * 16);
+  animation: scroll 35s linear infinite;
 }
 
-/* Pause the scrolling when a user hovers over it */
 .carousel-track:hover {
   animation-play-state: paused;
 }
 
-/* --- LOGO ITEMS & B&W EFFECT --- */
+/* --- LOGOS --- */
 .logo-item {
-  width: 200px; 
-  height: 60px; 
+  width: 200px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,20 +52,18 @@
 
 .logo-item img {
   max-width: 100%;
-  max-height: 35px; /* Keeps them all uniform */
+  max-height: 35px;
   object-fit: contain;
-  
-  /* THE BLACK AND WHITE FILTER */
-  filter: grayscale(100%); 
-  opacity: 0.45; /* Mutes them to a soft grey */
+
+  /* better dark mode neutral */
+  filter: grayscale(100%) opacity(0.5);
   transition: all 0.3s ease;
   cursor: pointer;
 }
 
-/* Makes them "pop" into full color when hovered over */
+/* hover effect */
 .logo-item img:hover {
-  filter: grayscale(0%);
-  opacity: 1;
+  filter: grayscale(0%) opacity(1);
 }
 
 /* --- EDGE FADING --- */
@@ -74,55 +72,60 @@
   position: absolute;
   top: 0;
   height: 100%;
-  width: 15%; 
+  width: 15%;
   z-index: 2;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .carousel-fade-left {
   left: 0;
-  background: linear-gradient(to right, #FAFAFB 0%, transparent 100%);
+  background: linear-gradient(to right, var(--bg-secondary), transparent);
 }
 
 .carousel-fade-right {
   right: 0;
-  background: linear-gradient(to left, #FAFAFB 0%, transparent 100%);
+  background: linear-gradient(to left, var(--bg-secondary), transparent);
 }
 
-/* --- ANIMATION KEYFRAMES --- */
+/* --- ANIMATION --- */
 @keyframes scroll {
   0% {
     transform: translateX(0);
   }
   100% {
-    /* Translate exactly half the track width (the 8 original logos) */
-    transform: translateX(calc(-200px * 8)); 
+    transform: translateX(calc(-200px * 8));
   }
 }
 
-/* --- MOBILE RESPONSIVENESS --- */
+/* --- MOBILE --- */
 @media (max-width: 768px) {
   .logo-item {
-    width: 140px; /* Tighter spacing on phones */
+    width: 140px;
     padding: 0 15px;
   }
-  
+
   .logo-item img {
-    max-height: 28px; /* Slightly smaller logos */
+    max-height: 28px;
   }
-  
+
   .carousel-track {
-    /* 8 unique logos * 140px width = 1120px. Duplicated = 2240px */
     width: calc(140px * 16);
   }
 
   @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
     100% {
-      /* Translate exactly half the mobile track width */
-      transform: translateX(calc(-140px * 8)); 
+      transform: translateX(calc(-140px * 8));
     }
   }
+}
+
+/* tap highlight fix */
+.logo-item img {
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.4s ease;
+  transform: scale(1);
+}
+
+.logo-item img:hover {
+  transform: scale(1.08);
 }
