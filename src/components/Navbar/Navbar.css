@@ -54,6 +54,11 @@
   transition: color 0.3s ease;
 }
 
+/* Add this new rule for the blue dot */
+.navbar-logo .logo-dot {
+  color: #2563eb; /* Your modern blue accent color */
+}
+
 /* --- LINKS & HOVER EFFECT --- */
 .navbar-links {
   display: flex;
