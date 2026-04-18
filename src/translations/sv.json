@@ -1,0 +1,75 @@
+{
+  "navbar": {
+    "links": {
+      "pricing": "Prissättning",
+      "howItWorks": "Hur det fungerar",
+      "devices": "Enheter",
+      "faq": "FAQ"
+    },
+    "cta": "Kom igång",
+    "promo": {
+      "badge": "🔥 Begränsat Erbjudande",
+      "title": "1-Månads Premium Pass",
+      "text": "Skippa testgränserna. Få full 4K-tillgång i 30 dagar till en massiv rabatt.",
+      "btn": "Hämta Erbjudande"
+    }
+  },
+  "hero": {
+    "trust": "Aktiva Prenumeranter",
+    "headline_1": "Premium IPTV-",
+    "headline_accent": "abonnemang.",
+    "subhead": "Njut av sport, film och live-TV i 4K — när som helst, var som helst",
+    "cta_whatsapp": "Hämta 1-månads pass via WhatsApp",
+    "cta_plans": "Visa alla planer",
+    "guarantees": {
+      "visuals": "Snygg 4K-kvalitet",
+      "performance": "Lagg-fri prestanda",
+      "support": "24/7 Expertsupport"
+    }
+  },
+  "carousel": {
+    "title": "PREMIUMINNEHÅLL INKLUDERAR"
+  },
+    "channelList": {
+    "badge": "Livekatalog",
+    "title1": "Interaktiv",
+    "title2": "Kanalguide",
+    "subtitle": "Utforska vår dynamiska kanalkatalog med uppdateringar i realtid. Hitta ditt favoritinnehåll enkelt och håll dig ansluten till de bästa underhållningsalternativen som finns.",
+    "sideBarList-label": "Tillgängliga nätverk",
+    "cl-badge-text": "Kanaler online"
+  },
+   "benefits": {
+    "badge": "Varför välja oss",
+    "title": "Ta din underhållning till nästa nivå.",
+    "subtitles": {
+      "channels": "Alla dina favoritkanaler",
+      "subscription": "Ett enkelt abonnemang"
+    },
+    "items": [
+      {
+        "title": "8K Ultra HD-streaming",
+        "description": "Upplev enastående skärpa. Vår plattform optimerar automatiskt din upplösning för en levande och bandbreddseffektiv tittarupplevelse."
+      },
+      {
+        "title": "Teknik utan buffring",
+        "description": "Säg hejdå till lagg. Med premiumservrar världen över garanterar vi 99,9 % drifttid, även under stora liveevent."
+      },
+      {
+        "title": "Ett enormt globalt bibliotek",
+        "description": "Få tillgång till 15 000+ livekanaler från över 50 länder samt ett dagligen uppdaterat VOD-bibliotek med filmer och serier."
+      },
+      {
+        "title": "Titta på dina villkor",
+        "description": "Synkronisera smidigt mellan enheter – från din Smart-TV till din mobil – och missa aldrig något med vår 14-dagars moln-DVR."
+      },
+      {
+        "title": "Inbyggd integritet",
+        "description": "Streama säkert. Vår teknik förhindrar hastighetsbegränsning från din internetleverantör och kringgår enkelt geografiska begränsningar."
+      },
+      {
+        "title": "Support dygnet runt",
+        "description": "Slipp automatiska bots. Få snabb hjälp från riktiga specialister via livechatt eller WhatsApp."
+      }
+    ]
+  }
+}

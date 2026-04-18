@@ -1,0 +1,76 @@
+{
+  "navbar": {
+    "links": {
+      "pricing": "Pricing",
+      "howItWorks": "How it Works",
+      "devices": "Devices",
+      "faq": "FAQ"
+    },
+    "cta": "Get Started",
+    "promo": {
+      "badge": "🔥 Limited Offer",
+      "title": "1-Month Premium Pass",
+      "text": "Skip the trial limits. Get full 4K access for 30 days at a massive discount.",
+      "btn": "Claim Offer"
+    }
+  },
+  "hero": {
+    "trust": "Active Subscribers",
+    "headline_1": "Premium IPTV",
+    "headline_accent": "Subscriptions.",
+    "subhead": "Enjoy Sports, Movies & Live TV in 4K — Anytime, Anywhere",
+    "cta_whatsapp": "Claim 1-Month Pass via WhatsApp",
+    "cta_plans": "View All Plans",
+    "guarantees": {
+      "visuals": "Breathtaking 4K Visuals",
+      "performance": "Lag-Free Performance",
+      "support": "24/7 Expert Support"
+    }
+  },
+  "carousel": {
+    "title": "PREMIUM CONTENT INCLUDES"
+  },
+  "channelList": {
+    "badge": "Live Directory",
+    "title1": "Interactive",
+    "title2": "Channel Guide",
+    "subtitle": "Explore our dynamic channel directory with real-time updates. Find your favorite content effortlessly and stay connected to the best entertainment options available.",
+    "sideBarList-label": "Available Networks",
+    "cl-badge-text": "Channels Online"
+  },
+  "benefits": {
+    "badge": "Why Choose Us",
+    "title": "Elevate Your Entertainment.",
+    "subtitles": {
+      "channels": "All your favorite channels",
+      "subscription": "One simple subscription"
+    },
+    "items": [
+      {
+        "title": "8K Ultra HD Streaming",
+        "description": "Experience breathtaking clarity. Our platform auto-optimizes your resolution for a vivid, bandwidth-friendly viewing experience."
+      },
+      {
+        "title": "Zero-Buffering Technology",
+        "description": "Say goodbye to lag. Backed by premium global servers, we guarantee 99.9% uptime even during peak live events."
+      },
+      {
+        "title": "Massive Global Library",
+        "description": "Unlock 15,000+ live channels across 50+ countries, plus dive into a daily-updated VOD library of box office hits and series."
+      },
+      {
+        "title": "Watch on Your Terms",
+        "description": "Sync seamlessly across devices, from your Smart TV to your phone, and never miss a moment with our 14-Day Cloud DVR."
+      },
+      {
+        "title": "Built-In Privacy",
+        "description": "Stream securely. Our built-in routing prevents ISP speed throttling and effortlessly bypasses restrictive geo-blocks."
+      },
+      {
+        "title": "24/7 Priority Support",
+        "description": "Skip the automated bots. Get lightning-fast support from real specialists via live chat or WhatsApp."
+      }
+    ]
+  }
+
+}
