@@ -8,16 +8,16 @@ import './Navbar.css';
 const WHATSAPP_LINK = "https://wa.me/your-number?text=Hi,%20I'm%20interested%20in%20the%201-month%20premium%20pass.";
 
 const FlagSV = () => (
-  <svg width="16" height="11" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: 'block' }}>
-    <rect width="16" height="11" fill="#006AA7" />
+  <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: 'block' }}>
+    <rect width="20" height="14" fill="#006AA7" />
     <rect x="5.5" width="3" height="14" fill="#FECC02" />
     <rect y="5.5" width="20" height="3" fill="#FECC02" />
   </svg>
 );
 
 const FlagEN = () => (
-  <svg width="16" height="11" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: 'block' }}>
-    <rect width="16" height="11" fill="#012169" />
+  <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: 'block' }}>
+    <rect width="20" height="14" fill="#012169" />
     <path d="M0 0L20 14M20 0L0 14" stroke="white" strokeWidth="2.4" />
     <path d="M0 0L20 14M20 0L0 14" stroke="#C8102E" strokeWidth="1.2" />
     <path d="M10 0V14M0 7H20" stroke="white" strokeWidth="3.6" />
