@@ -1,6 +1,6 @@
 .dark_mode {
     margin-top: -25px;
-    margin-left: 10px;
+    margin-left: 0px;
 }
 
 .dark_mode_label {
@@ -14,6 +14,8 @@
         inset 0px -5px 15px rgba(255, 255, 255, 0.4);
     cursor: pointer;
     transition: 0.3s;
+    transform: scale(0.72);
+    transform-origin: right center
 }
 .dark_mode_label:after {
     content: "";
