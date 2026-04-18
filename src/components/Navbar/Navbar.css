@@ -112,11 +112,22 @@
 .lang-corner {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   position: fixed;
   top: 18px;
   right: 16px;
   z-index: 1100;
+}
+
+.lang-corner > *:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.dark-mode-toggle {
+  height: 34px;           /* match lang-trigger exactly */
+  display: flex;
+  align-items: center;
 }
 
 .lang-switcher {
@@ -129,8 +140,9 @@
 .lang-trigger {
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 9px 5px 7px;
+  gap: 6px;
+  height: 34px;           /* fixed height — same as toggle */
+  padding: 0 10px 0 8px;  /* horizontal padding only, no vertical */
   background: var(--card-bg);
   border: 1.5px solid var(--border-color);
   border-radius: 30px;
