@@ -1,5 +1,7 @@
 import React from 'react';
 import './carousel.css';
+import { useLang } from '../../../context/LanguageContext';
+
 
 // Import all SVGs directly matching your exact filenames
 import amazonPrime from './assets/logos/AmazonPrime.svg';
@@ -27,10 +29,12 @@ function Carousel() {
   // Duplicate for the infinite scrolling loop
   const duplicatedLogos = [...logos, ...logos];
 
+  const { t } = useLang();
+
   return (
     <section className="carousel-section">
-      <p className="carousel-heading">PREMIUM CONTENT INCLUDES</p>
-      
+      <p className="carousel-heading">{t('carousel.title')}</p>
+
       <div className="carousel-wrapper">
         <div className="carousel-track">
           {duplicatedLogos.map((logo, index) => (

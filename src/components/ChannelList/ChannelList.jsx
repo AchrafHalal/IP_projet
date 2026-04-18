@@ -2,6 +2,8 @@ import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { Search, Tv, MonitorPlay, Film, Globe, Radio } from 'lucide-react';
 import { CHANNEL_GROUPS } from './ChannelData';
 import './ChannelList.css';
+import { useLang } from '../../context/LanguageContext';
+
 
 const getIcon = (type, color = "#001A46") => {
   const icons = {
@@ -41,18 +43,20 @@ export default function ChannelList() {
     );
   }, [searchQuery]);
 
+  const { t } = useLang();
+
   return (
     <section className="cl-section" id="channels">
       <div className="cl-container">
         
         {/* PREMIUM TYPOGRAPHY HEADER */}
         <div className="cl-header">
-          <div className="cl-badge">Live Directory</div>
+          <div className="cl-badge">{t('channelList.badge')}</div>
           <h2 className="cl-title">
-            Interactive <br />
-            <span>Channel Guide</span>
+            {t('channelList.title1')} <br />
+            <span>{t('channelList.title2')}</span>
           </h2>
-          <p className="cl-subtitle">Explore our massive library of live events and global entertainment categories.</p>
+          <p className="cl-subtitle">{t('channelList.subtitle')}</p>
         </div>
 
         {/* PLAYER BOX */}
@@ -70,7 +74,7 @@ export default function ChannelList() {
               />
             </div>
             <div className="cl-sidebar-list">
-              <div className="cl-sidebar-label">Available Networks</div>
+              <div className="cl-sidebar-label">{t('channelList.sideBarList-label')}</div>
               {filteredCategories.map((group) => (
                 <button 
                   key={group.id}
@@ -91,7 +95,7 @@ export default function ChannelList() {
                 {getIcon(selectedGroup.iconType)}
                 <h3>{selectedGroup.name}</h3>
               </div>
-              <span className="cl-vh-badge">{selectedGroup.count} Channels Online</span>
+              <span className="cl-vh-badge">{selectedGroup.count} {t('channelList.cl-badge-text')}</span>
             </div>
             
             {/* 3. Attach the ref here so React knows which box to scroll */}
