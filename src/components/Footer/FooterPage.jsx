@@ -34,10 +34,10 @@ export default function Footer() {
             Reliable, fast, and buffer-free entertainment.
           </p>
           <div className="fd-socials">
-            <a href="" className="fd-social-icon"><FacebookIcon /></a>
-            <a href="" className="fd-social-icon"><InstagramIcon /></a>
-            <a href="" className="fd-social-icon"><TelegramIcon /></a>
-            <a href="" className="fd-social-icon"><TikTokIcon /></a>
+            <a href="/#" className="fd-social-icon"><FacebookIcon /></a>
+            <a href="/#" className="fd-social-icon"><InstagramIcon /></a>
+            <a href="/#" className="fd-social-icon"><TelegramIcon /></a>
+            <a href="/#" className="fd-social-icon"><TikTokIcon /></a>
           </div>
         </div>
 
@@ -48,7 +48,7 @@ export default function Footer() {
             <ul>
               <li><Link to="/About">About Us</Link></li>
               <li><a href="#FAQ">FAQ</a></li>
-              <li><a href={whatsappLink} target="_blank">Contact Us</a></li>
+              <li><a href={whatsappLink} target="_blank" rel="noreferrer">Contact Us</a></li>
             </ul>
           </div>
 
