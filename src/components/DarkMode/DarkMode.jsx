@@ -1,48 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ReactComponent as Sun } from "./Sun.svg";
 import { ReactComponent as Moon } from "./Moon.svg";
 import "./DarkMode.css";
 
 const DarkMode = () => {
-    // 1. Logic to apply the theme
-    const setDarkMode = () => {
-        document.querySelector("body").setAttribute("data-theme", "dark");
-        localStorage.setItem("selectedTheme", "dark");
-    };
+    const [isDark, setIsDark] = useState(false);
 
-    const setLightMode = () => {
-        document.querySelector("body").setAttribute("data-theme", "light");
-        localStorage.setItem("selectedTheme", "light");
-    };
-
-    // 2. Load the saved theme on startup
     useEffect(() => {
         const selectedTheme = localStorage.getItem("selectedTheme");
         if (selectedTheme === "dark") {
-            setDarkMode();
-            // Check the checkbox visually
-            document.querySelector("#darkmode-toggle").checked = true;
+            document.querySelector("body").setAttribute("data-theme", "dark");
+            setIsDark(true);
         }
+
+        const handleThemeSync = (e) => {
+            setIsDark(e.detail === 'dark');
+        };
+        window.addEventListener('theme-sync', handleThemeSync);
+        
+        return () => window.removeEventListener('theme-sync', handleThemeSync);
     }, []);
 
-    const toggleTheme = (e) => {
-        if (e.target.checked) setDarkMode();
-        else setLightMode();
+    const toggleTheme = () => {
+        const newTheme = isDark ? "light" : "dark";
+        document.querySelector("body").setAttribute("data-theme", newTheme);
+        localStorage.setItem("selectedTheme", newTheme);
+        setIsDark(!isDark);
+        window.dispatchEvent(new CustomEvent('theme-sync', { detail: newTheme }));
     };
 
     return (
-        <div className='dark_mode'>
-            <input
-                className='dark_mode_input'
-                type='checkbox'
-                id='darkmode-toggle'
-                onChange={toggleTheme}
-            />
-            <label className='dark_mode_label' htmlFor='darkmode-toggle'>
-                <Sun className="sun" />
-                <Moon className="moon" />
-            </label>
-        </div>
+        <button 
+            className='dark_mode_btn' 
+            onClick={toggleTheme}
+            aria-label="Toggle Dark Mode"
+        >
+            {/* The magic happens right here: */}
+            {isDark ? <Sun className="theme-icon sun-icon" /> : <Moon className="theme-icon moon-icon" />}
+        </button>
     );
 };
 

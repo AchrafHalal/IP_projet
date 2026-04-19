@@ -1,71 +1,23 @@
 import React, { useState } from "react";
+import { useLang } from '../../context/LanguageContext';
 import "./BuyerJourney.css";
 import { MessageCircle, CreditCard, Landmark } from 'lucide-react';
 
-// ── Step definitions ────────────────────────────────────────────────
-const steps = [
-  {
-    id: "plan",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-      </svg>
-    ),
-    label: "Choose Your Plan",
-    title: "Pick the Plan That Fits You",
-    subtitle: "Flexible subscriptions — no contracts, cancel anytime.",
-    content: <PlanStep />,
-  },
-  {
-    id: "contact",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      </svg>
-    ),
-    label: "Chat With Us",
-    title: "Confirm on WhatsApp",
-    subtitle: "Send us your chosen plan and we'll set everything up for you.",
-    content: <ContactStep />,
-  },
-  {
-    id: "payment",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>
-      </svg>
-    ),
-    label: "Secure Payment",
-    title: "Complete Your Payment",
-    subtitle: "Pay securely via bank transfer, cash, or online. Instant confirmation.",
-    content: <PaymentStep />,
-  },
-  {
-    id: "access",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
-      </svg>
-    ),
-    label: "Account Setup",
-    title: "Get Instant Access",
-    subtitle: "Receive your credentials within 15 minutes and start streaming.",
-    content: <AccessStep />,
-  },
-];
-
 // ── Plan step content ────────────────────────────────────────────────
-function PlanStep() {
+function PlanStep({ t }) {
   const [selected, setSelected] = useState(1);
+  
+  // Combine static data (prices/logic) with translated data (names/badges)
+  const plansData = t('buyerJourney.step1.plans') || [];
   const plans = [
-    { id: 0, name: "1 Month",  price: "10$",  badge: null,       connections: 1, devices: "All devices" },
-    { id: 1, name: "3 Months", price: "25$",  badge: "Popular",  connections: 2, devices: "All devices" },
-    { id: 2, name: "6 Months", price: "45$",  badge: null,       connections: 2, devices: "All devices" },
-    { id: 3, name: "1 Year",   price: "70$",  badge: "Best Deal",connections: 3, devices: "All devices" },
+    { id: 0, price: "10$", connections: 1, ...plansData[0] },
+    { id: 1, price: "25$", connections: 2, ...plansData[1] },
+    { id: 2, price: "45$", connections: 2, ...plansData[2] },
+    { id: 3, price: "70$", connections: 3, ...plansData[3] },
   ];
+
   return (
     <div className="bj-plan-step-container">
-      {/* 2x2 Grid for Plans */}
       <div className="bj-plan-grid">
         {plans.map((p) => (
           <button
@@ -76,147 +28,129 @@ function PlanStep() {
             {p.badge && <span className="bj-plan-badge">{p.badge}</span>}
             <div className="bj-plan-name">{p.name}</div>
             <div className="bj-plan-price">{p.price}</div>
-            <div className="bj-plan-detail">{p.connections} connection{p.connections > 1 ? "s" : ""}</div>
-            <div className="bj-plan-detail">{p.devices}</div>
+            <div className="bj-plan-detail">
+              {p.connections} {p.connections > 1 ? t('buyerJourney.step1.connections_plural') : t('buyerJourney.step1.connections')}
+            </div>
+            <div className="bj-plan-detail">{t('buyerJourney.step1.devices')}</div>
           </button>
         ))}
       </div>
       
-      {/* Button safely outside the grid */}
       <a
         href="https://wa.me/YOUR_NUMBER?text=I want to subscribe"
         target="_blank"
         rel="noopener noreferrer"
         className="bj-cta-btn"
       >
-        Continue with Selected Plan →
+        {t('buyerJourney.step1.cta')} →
       </a>
     </div>
   );
 }
 
 // ── Contact step content ─────────────────────────────────────────────
-function ContactStep() {
+function ContactStep({ t }) {
   return (
     <div className="bj-contact-wrap">
       <div className="bj-contact-card">
         <div className="bj-contact-icon">💬</div>
         <div>
-          <p className="bj-contact-title">Message us on WhatsApp</p>
-          <p className="bj-contact-desc">
-            Tell us which plan you chose. We'll confirm availability and guide you through the next steps in minutes.
-          </p>
+          <p className="bj-contact-title">{t('buyerJourney.step2.cardTitle')}</p>
+          <p className="bj-contact-desc">{t('buyerJourney.step2.cardDesc')}</p>
         </div>
       </div>
 
       <div className="bj-info-rows">
         <div className="bj-info-row">
           <span className="bj-info-icon">⚡</span>
-          <span>We typically reply within <strong>5 minutes</strong></span>
+          <span dangerouslySetInnerHTML={{ __html: t('buyerJourney.step2.replyTime') }} />
         </div>
         <div className="bj-info-row">
           <span className="bj-info-icon">🌍</span>
-          <span>Available <strong>7 days a week</strong>, Swedish & English support</span>
+          <span dangerouslySetInnerHTML={{ __html: t('buyerJourney.step2.availability') }} />
         </div>
         <div className="bj-info-row">
           <span className="bj-info-icon">🔒</span>
-          <span>Your information stays <strong>100% private</strong></span>
+          <span dangerouslySetInnerHTML={{ __html: t('buyerJourney.step2.privacy') }} />
         </div>
       </div>
 
       <a
-        href="https://wa.me/YOUR_NUMBER?text=Hi, I want to subscribe to your IPTV service"
+        href="https://wa.me/YOUR_NUMBER?text=Hi"
         target="_blank"
         rel="noopener noreferrer"
         className="bj-cta-btn bj-cta-green"
       >
         <span style={{ fontSize: "18px" }}>💬</span>
-        Open WhatsApp Chat →
+        {t('buyerJourney.step2.cta')} →
       </a>
     </div>
   );
 }
 
 // ── Payment step content ─────────────────────────────────────────────
-function PaymentStep() {
-  const STRIPE_LINK = "https://buy.stripe.com/example";
-  const WISE_LINK = "https://wise.com/pay/me/yourlink";
-  const WHATSAPP_LINK = "https://wa.me/YOUR_NUMBER?text=I want to pay for my IPTV subscription";
+function PaymentStep({ t }) {
+  const WHATSAPP_LINK = "https://wa.me/YOUR_NUMBER?text=Payment confirmation";
 
   return (
     <div className="bj-payment-wrap">
       <div className="bj-payment-header">
-        <span className="bj-payment-label">Choose your method</span>
+        <span className="bj-payment-label">{t('buyerJourney.step3.methodLabel')}</span>
         <div className="bj-payment-badges">
-          <span className="bj-pay-badge">💳 Card</span>
-          <span className="bj-pay-badge">🏦 Bank</span>
+          <span className="bj-pay-badge">💳 {t('buyerJourney.step3.badges.card')}</span>
+          <span className="bj-pay-badge">🏦 {t('buyerJourney.step3.badges.bank')}</span>
         </div>
       </div>
 
       <div className="bj-payment-methods">
-        <a href={STRIPE_LINK} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-          <div className="bj-method-card" style={{ cursor: 'pointer', transition: 'border 0.2s' }}>
-            <div className="bj-method-icon">
-              <CreditCard size={22} color="#000000" strokeWidth={2.5} />
-            </div>
-            <div>
-              <p className="bj-method-title">Credit / Debit Card</p>
-              <p className="bj-method-desc">Pay securely via Stripe link. All cards accepted.</p>
-            </div>
+        <div className="bj-method-card">
+          <div className="bj-method-icon"><CreditCard size={22} color="#000000" /></div>
+          <div>
+            <p className="bj-method-title">{t('buyerJourney.step3.stripe.title')}</p>
+            <p className="bj-method-desc">{t('buyerJourney.step3.stripe.desc')}</p>
           </div>
-        </a>
+        </div>
 
-        <a href={WISE_LINK} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-          <div className="bj-method-card" style={{ cursor: 'pointer' }}>
-            <div className="bj-method-icon">
-              <Landmark size={22} color="#001A46" strokeWidth={2.5} />
-            </div>
-            <div>
-              <p className="bj-method-title">Wise Transfer</p>
-              <p className="bj-method-desc">Fast international transfer with low fees. Best for EU/US.</p>
-            </div>
+        <div className="bj-method-card">
+          <div className="bj-method-icon"><Landmark size={22} color="#001A46" /></div>
+          <div>
+            <p className="bj-method-title">{t('buyerJourney.step3.wise.title')}</p>
+            <p className="bj-method-desc">{t('buyerJourney.step3.wise.desc')}</p>
           </div>
-        </a>
+        </div>
       </div>
 
       <div className="bj-payment-note">
-        <MessageCircle size={18} strokeWidth={3} /> After paying via Stripe or Wise, please take a screenshot and send it to us via WhatsApp for instant activation.
+        <MessageCircle size={18} strokeWidth={3} /> {t('buyerJourney.step3.note')}
       </div>
 
-      <a
-        href={WHATSAPP_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bj-cta-btn bj-cta-green"
-      >
-        💬 Chat with us to Confirm →
+      <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bj-cta-btn bj-cta-green">
+        💬 {t('buyerJourney.step3.cta')} →
       </a>
     </div>
   );
 }
 
 // ── Access step content ──────────────────────────────────────────────
-function AccessStep() {
+function AccessStep({ t }) {
+  const itemsData = t('buyerJourney.step4.items') || [];
+  const icons = ["👤", "🔗", "📺", "🎧"];
+
   return (
     <div className="bj-access-wrap">
       <div className="bj-success-card">
         <div className="bj-success-check">✓</div>
         <div>
-          <p className="bj-success-title">Subscription Activated!</p>
-          <p className="bj-success-desc">Your credentials will be sent to your WhatsApp within 15 minutes.</p>
+          <p className="bj-success-title">{t('buyerJourney.step4.successTitle')}</p>
+          <p className="bj-success-desc">{t('buyerJourney.step4.successDesc')}</p>
         </div>
       </div>
 
-      <p className="bj-access-label">What you'll receive</p>
+      <p className="bj-access-label">{t('buyerJourney.step4.listLabel')}</p>
       <div className="bj-access-items">
-        {[
-          { icon: "👤", title: "Username & Password", desc: "Login credentials for all your devices" },
-          { icon: "🔗", title: "Server URL / M3U Link", desc: "Your personal streaming link" },
-          { icon: "📺", title: "Setup Guide", desc: "Step-by-step instructions for your device" },
-          { icon: "🎧", title: "24/7 Support", desc: "We're here if you need any help" },
-        ].map((item, i) => (
+        {itemsData.map((item, i) => (
           <div className="bj-access-item" key={i}>
-            <span className="bj-access-icon">{item.icon}</span>
+            <span className="bj-access-icon">{icons[i]}</span>
             <div>
               <p className="bj-access-item-title">{item.title}</p>
               <p className="bj-access-item-desc">{item.desc}</p>
@@ -225,13 +159,8 @@ function AccessStep() {
         ))}
       </div>
 
-      <a
-        href="https://wa.me/YOUR_NUMBER"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="bj-cta-btn"
-      >
-        Contact Support →
+      <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener noreferrer" className="bj-cta-btn">
+        {t('buyerJourney.step4.cta')} →
       </a>
     </div>
   );
@@ -239,11 +168,20 @@ function AccessStep() {
 
 // ── Main component ───────────────────────────────────────────────────
 export default function BuyerJourney() {
+  const { t } = useLang();
   const [active, setActive] = useState(0);
   const [animating, setAnimating] = useState(false);
 
+  // Define steps icons and keys
+  const stepsConfig = [
+    { id: "plan", icon: <rect x="2" y="3" width="20" height="14" rx="2"/>, labelKey: "step1", titleKey: "step1", subKey: "step1", content: <PlanStep t={t} /> },
+    { id: "contact", icon: <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>, labelKey: "step2", titleKey: "step2", subKey: "step2", content: <ContactStep t={t} /> },
+    { id: "payment", icon: <rect x="2" y="5" width="20" height="14" rx="2"/>, labelKey: "step3", titleKey: "step3", subKey: "step3", content: <PaymentStep t={t} /> },
+    { id: "access", icon: <circle cx="12" cy="12" r="10"/>, labelKey: "step4", titleKey: "step4", subKey: "step4", content: <AccessStep t={t} /> },
+  ];
+
   const goTo = (idx) => {
-    if (idx === active) return;
+    if (idx === active || idx < 0 || idx >= stepsConfig.length) return;
     setAnimating(true);
     setTimeout(() => {
       setActive(idx);
@@ -251,20 +189,19 @@ export default function BuyerJourney() {
     }, 180);
   };
 
-  const step = steps[active];
+  const currentStep = stepsConfig[active];
 
   return (
     <section className="bj-section" id="BuyerJourney">
       <div className="bj-header">
-        <p className="bj-tag">YOUR JOURNEY</p>
-        <h2 className="bj-title">From browsing to streaming<br />in 4 simple steps.</h2>
+        <p className="bj-tag">{t('buyerJourney.header.tag')}</p>
+        <h2 className="bj-title" dangerouslySetInnerHTML={{ __html: t('buyerJourney.header.title') }} />
       </div>
 
       <div className="bj-panel">
-
         {/* LEFT nav list */}
         <div className="bj-nav">
-          {steps.map((s, i) => (
+          {stepsConfig.map((s, i) => (
             <button
               key={s.id}
               className={`bj-nav-item ${active === i ? "bj-nav-item--active" : ""} ${i < active ? "bj-nav-item--done" : ""}`}
@@ -272,12 +209,12 @@ export default function BuyerJourney() {
             >
               <div className={`bj-nav-icon-wrap ${active === i ? "bj-nav-icon-wrap--active" : ""} ${i < active ? "bj-nav-icon-wrap--done" : ""}`}>
                 {i < active ? (
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                ) : s.icon}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg>
+                ) : (
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">{s.icon}</svg>
+                )}
               </div>
-              <span className="bj-nav-label">{s.label}</span>
+              <span className="bj-nav-label">{t(`buyerJourney.nav.${s.labelKey}`)}</span>
               {active === i && <div className="bj-nav-bar" />}
             </button>
           ))}
@@ -286,56 +223,29 @@ export default function BuyerJourney() {
         {/* RIGHT card */}
         <div className="bj-card-wrap">
           <div className={`bj-card ${animating ? "bj-card--out" : ""}`}>
-
-            {/* Card header */}
             <div className="bj-card-header">
               <div>
-                <p className="bj-card-step">Step {active + 1} of {steps.length}</p>
-                <h3 className="bj-card-title">{step.title}</h3>
-                <p className="bj-card-sub">{step.subtitle}</p>
-              </div>
-              <div className="bj-progress-dots">
-                {steps.map((_, i) => (
-                  <div
-                    key={i}
-                    className="bj-progress-dot"
-                    style={{
-                      background: i === active ? "#001A46" : i < active ? "rgba(0, 26, 70, 0.4)" : "#e2e8f0",
-                      width: i === active ? "24px" : "8px",
-                    }}
-                  />
-                ))}
+                <p className="bj-card-step">
+                   {t('buyerJourney.nav.stepCount').replace('{{current}}', active + 1).replace('{{total}}', stepsConfig.length)}
+                </p>
+                <h3 className="bj-card-title">{t(`buyerJourney.${currentStep.titleKey}.title`)}</h3>
+                <p className="bj-card-sub">{t(`buyerJourney.${currentStep.subKey}.subtitle`)}</p>
               </div>
             </div>
 
             <div className="bj-card-divider" />
+            <div className="bj-card-body">{currentStep.content}</div>
 
-            {/* Step content */}
-            <div className="bj-card-body">
-              {step.content}
-            </div>
-
-            {/* Bottom nav */}
             <div className="bj-card-footer">
-              <button
-                className="bj-foot-btn"
-                onClick={() => goTo(active - 1)}
-                disabled={active === 0}
-              >
-                ← Back
+              <button className="bj-foot-btn" onClick={() => goTo(active - 1)} disabled={active === 0}>
+                ← {t('buyerJourney.nav.back')}
               </button>
-              <button
-                className="bj-foot-btn bj-foot-btn--next"
-                onClick={() => goTo(active + 1)}
-                disabled={active === steps.length - 1}
-              >
-                Next step →
+              <button className="bj-foot-btn bj-foot-btn--next" onClick={() => goTo(active + 1)} disabled={active === stepsConfig.length - 1}>
+                {t('buyerJourney.nav.next')} →
               </button>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -1,0 +1,318 @@
+/* --- PAGE WRAPPER --- */
+.blog-page-wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  padding-top: 120px; 
+  padding-bottom: 80px;
+  font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.post-container {
+  max-width: 800px; /* Narrows the reading column for better UX */
+}
+
+/* --- GLOBALS --- */
+.blog-badge {
+  display: inline-block;
+  background-color: rgba(37, 99, 235, 0.1); 
+  color: var(--primary, #2563eb);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.blog-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted, #6b7280);
+  margin-bottom: 12px;
+}
+
+.meta-dot {
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+/* --- BLOG GRID VIEW --- */
+.blog-hero {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.blog-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  color: var(--text-main, #111827);
+  margin: 0 0 16px 0;
+  letter-spacing: -1px;
+}
+
+.blog-subtitle {
+  font-size: 18px;
+  color: var(--text-muted, #6b7280);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
+}
+
+.blog-card {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #eaeaea);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary, #2563eb);
+}
+
+.blog-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.blog-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: var(--bg-secondary, #f3f4f6);
+}
+
+.blog-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.blog-category {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  color: #111827;
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.blog-content {
+  padding: 28px;
+}
+
+.blog-post-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main, #111827);
+  line-height: 1.4;
+  margin: 0 0 12px 0;
+  transition: color 0.2s ease;
+}
+
+.blog-card:hover .blog-post-title {
+  color: var(--primary, #2563eb);
+}
+
+.blog-post-excerpt {
+  font-size: 15px;
+  color: var(--text-muted, #6b7280);
+  line-height: 1.6;
+  margin: 0 0 24px 0;
+}
+
+.blog-read-more {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary, #2563eb);
+}
+
+.blog-read-more svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.blog-card:hover .blog-read-more svg {
+  transform: translateX(4px);
+}
+
+/* --- INDIVIDUAL POST VIEW --- */
+.blog-back-link {
+  display: inline-flex; /* Changed to inline-flex to align the arrow and text */
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  cursor: pointer;
+  margin-bottom: 32px;
+  transition: all 0.2s;
+  width: fit-content; /* Keeps the pill from stretching across the screen */
+}
+
+.blog-back-link:hover {
+  background: var(--border-color);
+  transform: translateX(-4px); /* That beautiful slide-left effect */
+}
+
+.article-header {
+  margin-bottom: 30px;
+}
+
+.article-meta {
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.article-meta .blog-badge {
+  margin-bottom: 0;
+}
+
+.article-title {
+  text-align: left;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: var(--text-main, #111827);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.article-image {
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 40px 0;
+  background-color: var(--bg-secondary, #f3f4f6);
+}
+
+.article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Typography for the article body injected via dangerouslySetInnerHTML */
+.article-body {
+  line-height: 1.8;
+  font-size: 18px;
+  color: var(--text-main, #111827);
+}
+
+.article-body h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 40px 0 16px 0;
+  color: var(--text-main, #111827);
+}
+
+.article-body p {
+  margin-bottom: 20px;
+}
+
+.article-body ul {
+  margin-bottom: 24px;
+  padding-left: 20px;
+}
+
+.article-body li {
+  margin-bottom: 10px;
+}
+
+.internal-link {
+  color: var(--primary, #2563eb);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.internal-link:hover {
+  text-decoration: underline;
+}
+
+/* Call to Action Box at the bottom of articles */
+.article-cta-box {
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #eaeaea);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 60px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.article-cta-box h3 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+  color: var(--text-main, #111827);
+}
+
+.article-cta-box p {
+  color: var(--text-muted, #6b7280);
+  margin-bottom: 24px;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media screen and (max-width: 768px) {
+  .blog-page-wrapper {
+    padding-top: 100px;
+  }
+  
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .blog-image-wrapper {
+    height: 200px;
+  }
+
+  .article-image {
+    height: 250px;
+    border-radius: 12px;
+  }
+
+  .article-body {
+    font-size: 16px;
+  }
+}

@@ -1,64 +1,15 @@
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
+import { useLang } from '../../context/LanguageContext';
 import { ChevronDown } from "lucide-react"; 
 import "./FaqStyle.css";
 
-// ─── DATA ─────────────────────────────────────────
-const FAQ_ITEMS = [
-  {
-    id: 1,
-    cat: "general",
-    q: "What is IPTV and how does it work?",
-    a: "IPTV delivers TV channels and video content over your internet connection instead of cable or satellite.",
-  },
-  {
-    id: 2,
-    cat: "general",
-    q: "How many channels do I get?",
-    a: "You get access to thousands of live channels, movies, and series.",
-  },
-  {
-    id: 3,
-    cat: "setup",
-    q: "How do I activate my subscription?",
-    a: "You will receive your credentials by email and can start immediately.",
-  },
-  {
-    id: 4,
-    cat: "technical",
-    q: "Why is my stream buffering?",
-    a: "Usually due to slow internet. Minimum 25 Mbps recommended.",
-  },
-  {
-    id: 5,
-    cat: "devices",
-    q: "What devices are supported?",
-    a: "Smart TVs, phones, tablets, PC, and streaming devices.",
-  },
-  {
-    id: 6,
-    cat: "billing",
-    q: "Can I get a refund?",
-    a: "Yes, we offer a 7-day money-back guarantee.",
-  },
-];
-
-// ─── CATEGORIES ───────────────────────────────────
-const CATEGORIES = [
-  { id: "all", label: "All" },
-  { id: "general", label: "General" },
-  { id: "setup", label: "Setup" },
-  { id: "technical", label: "Technical" },
-  { id: "devices", label: "Devices" },
-  { id: "billing", label: "Billing" },
-];
-
-// ─── ITEM ─────────────────────────────────────────
-const FAQItem = ({ item, open, onToggle }) => (
+// ─── ITEM COMPONENT ─────────────────────────────────────────
+const FAQItem = ({ item, open, onToggle, catLabel }) => (
   <div className={`faq-item ${open ? "faq-item--open" : ""}`}>
     <button className="faq-question" onClick={onToggle}>
       <div className="faq-q-left">
         <span className="faq-tag">
-          {item.cat}
+          {catLabel}
         </span>
         <span className="faq-q-text">
           {item.q}
@@ -80,15 +31,34 @@ const FAQItem = ({ item, open, onToggle }) => (
   </div>
 );
 
-// ─── MAIN ─────────────────────────────────────────
+// ─── MAIN COMPONENT ─────────────────────────────────────────
 export default function FaqPage() {
+  const { t } = useLang();
   const [activeCat, setActiveCat] = useState("all");
   const [openId, setOpenId] = useState(null);
 
+  // 1. Get Category Labels (for the tabs and tags)
+  const categoryLabels = t('faq.categories') || {};
+
+  // 2. Optimized Filtering logic
   const filtered = useMemo(() => {
-    if (activeCat === "all") return FAQ_ITEMS;
-    return FAQ_ITEMS.filter((f) => f.cat === activeCat);
-  }, [activeCat]);
+    // We pull the raw data inside the memo to fix the ESLint warning
+    const rawItems = t('faq.items');
+    const faqItems = Array.isArray(rawItems) ? rawItems : [];
+
+    if (activeCat === "all") return faqItems;
+    return faqItems.filter((f) => f.cat === activeCat);
+  }, [activeCat, t]); // Now depends on activeCat and the translation function
+
+  // 3. Category definitions
+  const categories = [
+    { id: "all", label: categoryLabels.all },
+    { id: "general", label: categoryLabels.general },
+    { id: "setup", label: categoryLabels.setup },
+    { id: "technical", label: categoryLabels.technical },
+    { id: "devices", label: categoryLabels.devices },
+    { id: "billing", label: categoryLabels.billing },
+  ];
 
   const toggle = (id) => {
     setOpenId((prev) => (prev === id ? null : id));
@@ -100,16 +70,14 @@ export default function FaqPage() {
 
         {/* HEADER */}
         <div className="faq-header">
-          <div className="faq-badge">FAQ</div>
-          <h2 className="faq-title">Frequently Asked Questions</h2>
-          <p className="faq-subtitle">
-            Everything you need to know about our IPTV service.
-          </p>
+          <div className="faq-badge">{t('faq.badge')}</div>
+          <h2 className="faq-title">{t('faq.title')}</h2>
+          <p className="faq-subtitle">{t('faq.subtitle')}</p>
         </div>
 
         {/* TABS */}
         <div className="faq-tabs">
-          {CATEGORIES.map((cat) => (
+          {categories.map((cat) => (
             <button
               key={cat.id}
               className={`faq-tab ${activeCat === cat.id ? "active" : ""}`}
@@ -129,6 +97,7 @@ export default function FaqPage() {
             <FAQItem
               key={item.id}
               item={item}
+              catLabel={categoryLabels[item.cat]} 
               open={openId === item.id}
               onToggle={() => toggle(item.id)}
             />
