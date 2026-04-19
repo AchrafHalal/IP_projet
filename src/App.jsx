@@ -7,6 +7,8 @@ import Privacy from "./Pages/Privacy.jsx";
 import Terms from "./Pages/Terms.jsx";
 import Refund from "./Pages/Refund.jsx";
 import ScrollToTop from "./components/ScrollToTop";
+import Blog from './components/Blog/Blog.jsx';
+import BlogPost from './components/Blog/BlogPost.jsx';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/refund" element={<Refund />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </Layout>
     </Router>

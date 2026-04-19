@@ -1,17 +1,19 @@
-import { createContext, useContext, useState, useCallback } from "react";
+import { createContext, useContext, useState, useCallback, useEffect } from "react";
 import en from "../translations/en.json";
 import sv from "../translations/sv.json";
 
 // ─── All translation bundles ───────────────────────────────────────────────
 const TRANSLATIONS = { en, sv };
 
-// ─── Read saved language from localStorage (default: "en") ────────────────
+// ─── Read saved language from localStorage (default: "sv") ────────────────
 const getSavedLang = () => {
   try {
     const saved = localStorage.getItem("ss_lang");
-    return saved && TRANSLATIONS[saved] ? saved : "en";
+    // Changed fallback to "sv"
+    return saved && TRANSLATIONS[saved] ? saved : "sv";
   } catch {
-    return "en";
+    // Changed fallback to "sv"
+    return "sv";
   }
 };
 
@@ -20,7 +22,12 @@ const LanguageContext = createContext(null);
 
 // ─── Provider ─────────────────────────────────────────────────────────────
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState(getSavedLang() || "en");
+  const [lang, setLang] = useState(getSavedLang());
+
+  // --- NEW: Sync HTML lang attribute dynamically for SEO ---
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const changeLang = useCallback((code) => {
     if (!TRANSLATIONS[code]) return;
@@ -32,7 +39,6 @@ export function LanguageProvider({ children }) {
     }
   }, []);
 
-  // --- CHANGE THIS PART ---
   // We turn 't' into a function that looks up paths like "navbar.cta"
   const t = useCallback((path) => {
     const keys = path.split('.');
