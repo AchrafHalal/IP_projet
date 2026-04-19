@@ -3,6 +3,8 @@ import './DeviceCompatibility.css';
 import { devices } from './Devices/index.jsx';
 // IMPORT LUCIDE ICONS
 import { Tv, Laptop, TabletSmartphone, MonitorPlay, Cast, PlaySquare } from 'lucide-react';
+import { useLang } from '../../context/LanguageContext';
+
 
 // ─────────────────────────────────────────────
 //  Category Mapping
@@ -55,6 +57,9 @@ function StepCarousel({ steps }) {
 
   const step = steps[current] || {};
 
+    const { t } = useLang();
+  
+
   return (
     <div className="sc-wrap">
       <div className="sc-img-wrap">
@@ -63,7 +68,7 @@ function StepCarousel({ steps }) {
         ) : (
           <div className="sc-img-placeholder">
             <span style={{ fontSize: '40px', marginBottom: '8px' }}>🖼️</span>
-            <span className="sc-img-label">UI Screenshot</span>
+            <span className="sc-img-label">{t('compatibility.placeholder_img')}</span>
             <code className="sc-img-path">{step.image || 'Add image path'}</code>
           </div>
         )}
@@ -73,13 +78,13 @@ function StepCarousel({ steps }) {
       </div>
 
       <div className="sc-body">
-        <p className="sc-step-num">Step {current + 1}</p>
+        <p className="sc-step-num">{t('compatibility.step_label')} {current + 1}</p>
         <h4 className="sc-step-title">{step.title}</h4>
         <p className="sc-step-text">{step.text}</p>
       </div>
 
       <div className="sc-nav">
-        <button className="sc-nav-btn" onClick={prev}>‹ Prev</button>
+        <button className="sc-nav-btn" onClick={prev}>{t('compatibility.nav_prev')}</button>
         <div className="sc-dots">
           {steps.map((_, i) => (
             <button
@@ -90,46 +95,12 @@ function StepCarousel({ steps }) {
             />
           ))}
         </div>
-        <button className="sc-nav-btn" onClick={next}>Next ›</button>
+        <button className="sc-nav-btn" onClick={next}>{t('compatibility.nav_next')}</button>
       </div>
     </div>
   );
 }
 
-// ─────────────────────────────────────────────
-//  YouTube Video Player
-// ─────────────────────────────────────────────
-function YouTubePlayer({ url }) {
-  return (
-    <div
-      style={{
-        position: 'relative',
-        paddingBottom: '56.25%', // 16:9 aspect ratio
-        height: 0,
-        borderRadius: '12px',
-        overflow: 'hidden',
-        marginBottom: '24px',
-        background: '#000',
-      }}
-    >
-      <iframe
-        src={url}
-        title="Installation Tutorial"
-        allowFullScreen
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          border: 'none',
-          borderRadius: '12px',
-        }}
-      />
-    </div>
-  );
-}
 
 // ─────────────────────────────────────────────
 //  Main component
@@ -138,6 +109,9 @@ export default function DeviceCompatibility() {
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id);
   const [activeDevice, setActiveDevice] = useState(devices.find(d => d.label === 'Fire Stick') || devices[0]);
   const [animating, setAnimating] = useState(false);
+
+   const { t } = useLang();
+
 
   // Get the devices that belong to the currently selected category
   const currentCategoryObj = CATEGORIES.find(c => c.id === activeCategory);
@@ -185,10 +159,10 @@ export default function DeviceCompatibility() {
       <div className="dc-container">
         
         <div className="dc-header">
-          <div className="section-badge reveal">Compatibility</div>
-          <h2 className="dc-title reveal delay-1">Works on all your devices.</h2>
+          <div className="section-badge reveal">{t('compatibility.badge')}</div>
+          <h2 className="dc-title reveal delay-1">{t('compatibility.title')}</h2>
           <p className="dc-subtitle reveal delay-2">
-            Select your device and follow the step-by-step installation guide.
+            {t('compatibility.subtitle')}
           </p>
         </div>
 
@@ -235,29 +209,21 @@ export default function DeviceCompatibility() {
                 </div>
                 <div className="dc-card-top-text">
                   <h3 className="dc-app-name">{activeDevice.appName || activeDevice.label}</h3>
-                  <p className="dc-app-desc">{activeDevice.description || "Installation guide and features."}</p>
+                  <p className="dc-app-desc">{activeDevice.description || t('compatibility.default_desc')}</p>
                 </div>
               </div>
 
               <div className="dc-divider" />
 
-              {/* ── VIDEO TUTORIAL (YouTube) ── */}
-              {activeDevice.vid && (
-                <>
-                  <p className="dc-steps-label">Video Tutorial</p>
-                  <YouTubePlayer url={activeDevice.vid} />
-                  <div className="dc-divider" style={{ marginBottom: '20px' }} />
-                </>
-              )}
 
               {/* ── INSTALLATION STEPS ── */}
-              <p className="dc-steps-label">Installation steps</p>
+              <p className="dc-steps-label">{t('compatibility.installation_steps')}</p>
               <StepCarousel key={activeDevice.label} steps={activeDevice.steps || []} />
 
               <div className="dc-divider" style={{ marginTop: '30px', marginBottom: '20px' }} />
 
               {/* ── APP FEATURES ── */}
-              <p className="dc-steps-label">App Features</p>
+              <p className="dc-steps-label">{t('compatibility.app_features')}</p>
               <div className="dc-features-grid">
                 {(activeDevice.features || []).map((f, i) => (
                   <div className="dc-feature" key={i}>

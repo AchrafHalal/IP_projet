@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useLang } from '../../context/LanguageContext';
 import { Mail, Send, ShieldCheck } from 'lucide-react';
 import './Contact.css';
 
 export default function Contact() {
-  const [status, setStatus] = useState({ type: '', msg: '' });
+  const { t } = useLang();
+  const [status, setStatus] = useState({ type: '', msgKey: '' });
 
   // Auto-hide the success/error message after 4 seconds
   useEffect(() => {
-    if (status.msg) {
+    if (status.msgKey) {
       const timer = setTimeout(() => {
-        setStatus({ type: '', msg: '' });
+        setStatus({ type: '', msgKey: '' });
       }, 4000); 
       return () => clearTimeout(timer); 
     }
-  }, [status.msg]);
+  }, [status.msgKey]);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -30,14 +32,14 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        setStatus({ type: 'success', msg: 'Successfully subscribed to updates!' });
+        setStatus({ type: 'success', msgKey: 'contact.status.success' });
         e.target.reset();
       } else {
-        setStatus({ type: 'error', msg: 'Failed to subscribe. Please try again.' });
+        setStatus({ type: 'error', msgKey: 'contact.status.error' });
       }
     } catch (error) {
       console.error("Network error:", error);
-      setStatus({ type: 'error', msg: 'Network error. Make sure your backend is running.' });
+      setStatus({ type: 'error', msgKey: 'contact.status.networkError' });
     }
   };
 
@@ -46,28 +48,33 @@ export default function Contact() {
       <div className="contact-modern-container">
         
         <header className="contact-modern-header">
-          {/* Updated badge and text */}
-          <span className="contact-modern-badge">Newsletter</span>
-          <h2>Stay in the Loop</h2>
-          <p>Join our newsletter for the latest channel updates and Swedish market offers.</p>
+          <span className="contact-modern-badge">{t('contact.badge')}</span>
+          <h2>{t('contact.title')}</h2>
+          <p>{t('contact.subtitle')}</p>
         </header>
 
         <div className="contact-modern-card">
           <form className="newsletter-form" onSubmit={handleSubscribe}>
+            {/* Honeypot field for spam */}
             <input type="text" name="website_hp" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
 
             <div className="newsletter-input-group">
               <Mail className="input-icon" size={20} />
-              <input type="email" name="email" placeholder="Enter your email address..." required />
+              <input 
+                type="email" 
+                name="email" 
+                placeholder={t('contact.placeholder')} 
+                required 
+              />
               <button type="submit" className="newsletter-btn">
-                Subscribe <Send size={16} />
+                {t('contact.button')} <Send size={16} />
               </button>
             </div>
 
-            {status.msg && (
+            {status.msgKey && (
               <div className={`form-status ${status.type}`}>
                 <ShieldCheck size={18} />
-                {status.msg}
+                {t(status.msgKey)}
               </div>
             )}
           </form>

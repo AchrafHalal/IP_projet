@@ -71,6 +71,263 @@
         "description": "Skip the automated bots. Get lightning-fast support from real specialists via live chat or WhatsApp."
       }
     ]
+  },
+  "compatibility": {
+    "badge": "Compatibility",
+    "title": "Works on all your devices.",
+    "subtitle": "Select your device and follow the step-by-step installation guide.",
+    "installation_steps": "Installation steps",
+    "app_features": "App Features",
+    "step_label": "Step",
+    "nav_prev": "‹ Prev",
+    "nav_next": "Next ›",
+    "placeholder_img": "UI Screenshot",
+    "default_desc": "Installation guide and features."
+  },
+  "categories": {
+    "streaming": "Streaming Devices",
+    "tv": "Smart TVs",
+    "mobile": "Mobile & Tablet",
+    "pc": "Computers & Players"
+  },
+  "device_labels": {
+    "fire_stick": "Fire Stick",
+    "apple_tv": "Apple TV",
+    "mag_box": "MAG Box",
+    "enigma2": "Enigma2 / Dreambox",
+    "samsung_tv": "Samsung Smart TV",
+    "android_tv": "Android TV / Box",
+    "lg_tv": "LG Smart TV",
+    "iphone_ipad": "iPhone / iPad",
+    "android_phone": "Android Phone",
+    "windows_pc": "Windows PC",
+    "mac": "Mac",
+    "vlc_player": "VLC / Any Player"
+  },
+  "pricing": {
+    "header": {
+      "badge": "Simple Pricing",
+      "title": "Choose Your Entertainment Plan",
+      "subtitle": "Unlock unlimited broadcast-quality streaming. No hidden fees, cancel anytime.",
+      "socialProof": "Trusted by <strong>1,000+</strong> happy Subscribers"
+    },
+    "vip": {
+      "title": "1-Month Starter Pass",
+      "subtitle": "Test our premium servers with a full month of unrestricted access.",
+      "button": "Unlock for $14"
+    },
+    "plans": {
+      "popular": "Most Popular",
+      "choose": "Choose Plan",
+      "start": "Get Started Now",
+      "oneTime": "One-time payment",
+      "noContract": "Zero contracts",
+      "savings": "Massive savings",
+      "only": "Only",
+      "perMonth": "/mo",
+      "sixMonth": {
+        "name": "6-Month Access",
+        "desc": "Great for casual viewers looking to save."
+      },
+      "threeMonth": {
+        "name": "3-Month Pro",
+        "desc": "The perfect sweet spot. Commit less, stream more."
+      },
+      "twelveMonth": {
+        "name": "12-Month Premium",
+        "desc": "The ultimate cord-cutter package. Best overall value."
+      }
+    },
+    "features": [
+      "8K & 4K Ultra HD Streaming",
+      "15,000+ Global Channels",
+      "Zero-Buffering Technology",
+      "14-Day Cloud DVR",
+      "Multi-Device Syncing",
+      "24/7 Priority Support",
+      "Built-in Anti-Throttling"
+    ],
+    "guarantee": {
+      "title": "Every plan includes full access to:",
+      "refundTitle": "7-Day Money-Back Guarantee",
+      "refundDesc": "If you experience any buffering or aren't completely satisfied with the channel lineup, we'll refund your payment in full. No questions asked."
+    },
+    "footer": {
+      "secure": "SECURE CHECKOUT"
+    }
+  },
+  "pricing": {
+    "header": {
+      "badge": "Simple Pricing",
+      "title": "Choose Your Entertainment Plan",
+      "subtitle": "Unlock unlimited broadcast-quality streaming. No hidden fees, cancel anytime.",
+      "socialProof": "Trusted by <strong>1,000+</strong> happy Subscribers"
+    },
+    "vip": {
+      "title": "1-Month Starter Pass",
+      "subtitle": "Test our premium servers with a full month of unrestricted access.",
+      "button": "Unlock for $14"
+    },
+    "plans": {
+      "popular": "Most Popular",
+      "choose": "Choose Plan",
+      "start": "Get Started Now",
+      "oneTime": "One-time payment",
+      "noContract": "Zero contracts",
+      "savings": "Massive savings",
+      "only": "Only",
+      "perMonth": "/mo",
+      "sixMonth": {
+        "name": "6-Month Access",
+        "desc": "Great for casual viewers looking to save."
+      },
+      "threeMonth": {
+        "name": "3-Month Pro",
+        "desc": "The perfect sweet spot. Commit less, stream more."
+      },
+      "twelveMonth": {
+        "name": "12-Month Premium",
+        "desc": "The ultimate cord-cutter package. Best overall value."
+      }
+    },
+    "features": [
+      "8K & 4K Ultra HD Streaming",
+      "15,000+ Global Channels",
+      "Zero-Buffering Technology",
+      "14-Day Cloud DVR",
+      "Multi-Device Syncing",
+      "24/7 Priority Support",
+      "Built-in Anti-Throttling"
+    ],
+    "guarantee": {
+      "title": "Every plan includes full access to:",
+      "refundTitle": "7-Day Money-Back Guarantee",
+      "refundDesc": "If you experience any buffering or aren't completely satisfied with the channel lineup, we'll refund your payment in full. No questions asked."
+    },
+    "footer": {
+      "secure": "SECURE CHECKOUT"
+    }
+  },
+  "buyerJourney": {
+    "header": {
+      "tag": "YOUR JOURNEY",
+      "title": "From browsing to streaming in 4 simple steps."
+    },
+    "nav": {
+      "step1": "Choose Your Plan",
+      "step2": "Chat With Us",
+      "step3": "Secure Payment",
+      "step4": "Account Setup",
+      "back": "Back",
+      "next": "Next step",
+      "stepCount": "Step {{current}} of {{total}}"
+    },
+    "step1": {
+      "title": "Pick the Plan That Fits You",
+      "subtitle": "Flexible subscriptions — no contracts, cancel anytime.",
+      "cta": "Continue with Selected Plan",
+      "plans": [
+        { "name": "1 Month", "badge": null },
+        { "name": "3 Months", "badge": "Popular" },
+        { "name": "6 Months", "badge": null },
+        { "name": "1 Year", "badge": "Best Deal" }
+      ],
+      "connections": "connection",
+      "connections_plural": "connections",
+      "devices": "All devices"
+    },
+    "step2": {
+      "title": "Confirm on WhatsApp",
+      "subtitle": "Send us your chosen plan and we'll set everything up for you.",
+      "cardTitle": "Message us on WhatsApp",
+      "cardDesc": "Tell us which plan you chose. We'll confirm availability and guide you through the next steps in minutes.",
+      "replyTime": "We typically reply within <strong>5 minutes</strong>",
+      "availability": "Available <strong>7 days a week</strong>, Swedish & English support",
+      "privacy": "Your information stays <strong>100% private</strong>",
+      "cta": "Open WhatsApp Chat"
+    },
+    "step3": {
+      "title": "Complete Your Payment",
+      "subtitle": "Pay securely via bank transfer, cash, or online. Instant confirmation.",
+      "methodLabel": "Choose your method",
+      "badges": { "card": "Card", "bank": "Bank" },
+      "stripe": {
+        "title": "Credit / Debit Card",
+        "desc": "Pay securely via Stripe link. All cards accepted."
+      },
+      "wise": {
+        "title": "Wise Transfer",
+        "desc": "Fast international transfer with low fees. Best for EU/US."
+      },
+      "note": "After paying via Stripe or Wise, please take a screenshot and send it to us via WhatsApp for instant activation.",
+      "cta": "Chat with us to Confirm"
+    },
+    "step4": {
+      "title": "Get Instant Access",
+      "subtitle": "Receive your credentials within 15 minutes and start streaming.",
+      "successTitle": "Subscription Activated!",
+      "successDesc": "Your credentials will be sent to your WhatsApp within 15 minutes.",
+      "listLabel": "What you'll receive",
+      "items": [
+        { "title": "Username & Password", "desc": "Login credentials for all your devices" },
+        { "title": "Server URL / M3U Link", "desc": "Your personal streaming link" },
+        { "title": "Setup Guide", "desc": "Step-by-step instructions for your device" },
+        { "title": "24/7 Support", "desc": "We're here if you need any help" }
+      ],
+      "cta": "Contact Support"
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about our IPTV service.",
+    "categories": {
+      "all": "All",
+      "general": "General",
+      "setup": "Setup",
+      "technical": "Technical",
+      "devices": "Devices",
+      "billing": "Billing"
+    },
+    "items": [
+      { "id": 1, "cat": "general", "q": "What is IPTV and how does it work?", "a": "IPTV delivers TV channels and video content over your internet connection instead of cable or satellite." },
+      { "id": 2, "cat": "general", "q": "How many channels do I get?", "a": "You get access to thousands of live channels, movies, and series." },
+      { "id": 3, "cat": "setup", "q": "How do I activate my subscription?", "a": "You will receive your credentials via WhatsApp or email and can start immediately." },
+      { "id": 4, "cat": "technical", "q": "Why is my stream buffering?", "a": "Usually due to slow internet. Minimum 25 Mbps recommended for 4K streaming." },
+      { "id": 5, "cat": "devices", "q": "What devices are supported?", "a": "Smart TVs, phones, tablets, PC, and streaming devices like Firestick or Apple TV." },
+      { "id": 6, "cat": "billing", "q": "Can I get a refund?", "a": "Yes, we offer a 7-day money-back guarantee if you are not satisfied." }
+    ]
+  },
+  "contact": {
+    "badge": "Newsletter",
+    "title": "Stay in the Loop",
+    "subtitle": "Join our newsletter for the latest channel updates and Swedish market offers.",
+    "placeholder": "Enter your email address...",
+    "button": "Subscribe",
+    "status": {
+      "success": "Successfully subscribed to updates!",
+      "error": "Failed to subscribe. Please try again.",
+      "networkError": "Network error. Make sure your backend is running."
+    }
+  },
+  "footer": {
+    "description": "Premium 4K streaming for the Nordic market. Reliable, fast, and buffer-free entertainment.",
+    "columns": {
+      "support": "Support",
+      "legal": "Legal",
+      "office": "Office"
+    },
+    "links": {
+      "about": "About Us",
+      "faq": "FAQ",
+      "contact": "Contact Us",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "refund": "Refund Policy"
+    },
+    "copyright": "© {{year}} SvenskStream. All rights reserved."
   }
-
 }
+
+
+
