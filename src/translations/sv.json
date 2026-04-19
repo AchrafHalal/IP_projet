@@ -71,5 +71,209 @@
         "description": "Slipp automatiska bots. Få snabb hjälp från riktiga specialister via livechatt eller WhatsApp."
       }
     ]
+  },
+  "compatibility": {
+    "badge": "Kompatibilitet",
+    "title": "Fungerar på alla dina enheter.",
+    "subtitle": "Välj din enhet och följ steg-för-steg-installationsguiden.",
+    "video_tutorial": "Videoguide",
+    "installation_steps": "Installationssteg",
+    "app_features": "Appfunktioner",
+    "step_label": "Steg",
+    "nav_prev": "‹ Föregående",
+    "nav_next": "Nästa ›",
+    "placeholder_img": "Skärmdump av gränssnitt",
+    "default_desc": "Installationsguide och funktioner."
+  },
+  "categories": {
+    "streaming": "Streaming-enheter",
+    "tv": "Smart TV",
+    "mobile": "Mobil & Surfplatta",
+    "pc": "Datorer & Spelare"
+  },
+  "device_labels": {
+    "fire_stick": "Fire Stick",
+    "apple_tv": "Apple TV",
+    "mag_box": "MAG Box",
+    "enigma2": "Enigma2 / Dreambox",
+    "samsung_tv": "Samsung Smart TV",
+    "android_tv": "Android TV / Box",
+    "lg_tv": "LG Smart TV",
+    "iphone_ipad": "iPhone / iPad",
+    "android_phone": "Android-telefon",
+    "windows_pc": "Windows-PC",
+    "mac": "Mac",
+    "vlc_player": "VLC / Valfri spelare"
+  },
+  "pricing": {
+    "header": {
+      "badge": "Enkel prissättning",
+      "title": "Välj din underhållningsplan",
+      "subtitle": "Lås upp obegränsad streaming i sändningskvalitet. Inga dolda avgifter, avsluta när som helst.",
+      "socialProof": "Betrodd av över <strong>1 000</strong> nöjda prenumeranter"
+    },
+    "vip": {
+      "title": "1-månads startpass",
+      "subtitle": "Testa våra premiumservrar med en hel månads obegränsad tillgång.",
+      "button": "Lås upp för $14"
+    },
+    "plans": {
+      "popular": "Mest populär",
+      "choose": "Välj plan",
+      "start": "Kom igång nu",
+      "oneTime": "Engångsbetalning",
+      "noContract": "Inga bindningstider",
+      "savings": "Massiva besparingar",
+      "only": "Endast",
+      "perMonth": "/mån",
+      "sixMonth": {
+        "name": "6 månaders tillgång",
+        "desc": "Perfekt för tillfälliga tittare som vill spara pengar."
+      },
+      "threeMonth": {
+        "name": "3-månaders Pro",
+        "desc": "Den perfekta balansen. Bind dig mindre, streama mer."
+      },
+      "twelveMonth": {
+        "name": "12-månaders Premium",
+        "desc": "Det ultimata paketet för dig som lämnar kabel-TV. Bästa värdet totalt sett."
+      }
+    },
+    "features": [
+      "8K & 4K Ultra HD Streaming",
+      "15 000+ globala kanaler",
+      "Zero-Buffering teknik",
+      "14 dagars Cloud DVR",
+      "Synkronisering mellan flera enheter",
+      "24/7 prioriterad support",
+      "Inbyggd Anti-Throttling"
+    ],
+    "guarantee": {
+      "title": "Varje plan inkluderar full tillgång till:",
+      "refundTitle": "7 dagars pengarna-tillbaka-garanti",
+      "refundDesc": "Om du upplever buffring eller inte är helt nöjd med kanalutbudet återbetalar vi din betalning till fullo. Inga frågor ställs."
+    },
+    "footer": {
+      "secure": "SÄKER UTCHECKNING"
+    }
+  },
+  "buyerJourney": {
+    "header": {
+      "tag": "DIN RESA",
+      "title": "Från surfning till streaming på 4 enkla steg."
+    },
+    "nav": {
+      "step1": "Välj din plan",
+      "step2": "Chatta med oss",
+      "step3": "Säker betalning",
+      "step4": "Kontoaktivering",
+      "back": "Tillbaka",
+      "next": "Nästa steg",
+      "stepCount": "Steg {{current}} av {{total}}"
+    },
+    "step1": {
+      "title": "Välj den plan som passar dig",
+      "subtitle": "Flexibla prenumerationer — inga kontrakt, avsluta när som helst.",
+      "cta": "Fortsätt med vald plan",
+      "plans": [
+        { "name": "1 Månad", "badge": null },
+        { "name": "3 Månader", "badge": "Populär" },
+        { "name": "6 Månader", "badge": null },
+        { "name": "1 År", "badge": "Bästa dealen" }
+      ],
+      "connections": "anslutning",
+      "connections_plural": "anslutningar",
+      "devices": "Alla enheter"
+    },
+    "step2": {
+      "title": "Bekräfta på WhatsApp",
+      "subtitle": "Skicka din valda plan till oss så fixar vi allt åt dig.",
+      "cardTitle": "Meddelande oss på WhatsApp",
+      "cardDesc": "Berätta vilken plan du valt. Vi bekräftar tillgänglighet och guidar dig genom nästa steg på några minuter.",
+      "replyTime": "Vi svarar vanligtvis inom <strong>5 minuter</strong>",
+      "availability": "Tillgänglig <strong>7 dagar i veckan</strong>, support på svenska & engelska",
+      "privacy": "Din information förblir <strong>100% privat</strong>",
+      "cta": "Öppna WhatsApp-chatt"
+    },
+    "step3": {
+      "title": "Slutför din betalning",
+      "subtitle": "Betala säkert via banköverföring eller online. Omedelbar bekräftelse.",
+      "methodLabel": "Välj din metod",
+      "badges": { "card": "Kort", "bank": "Bank" },
+      "stripe": {
+        "title": "Kredit- / Betalkort",
+        "desc": "Betala säkert via Stripe-länk. Alla kort accepteras."
+      },
+      "wise": {
+        "title": "Wise-överföring",
+        "desc": "Snabb internationell överföring med låga avgifter."
+      },
+      "note": "Efter att du har betalat via Stripe eller Wise, vänligen ta en skärmdump och skicka den till oss via WhatsApp för omedelbar aktivering.",
+      "cta": "Chatta med oss för att bekräfta"
+    },
+    "step4": {
+      "title": "Få omedelbar åtkomst",
+      "subtitle": "Få dina inloggningsuppgifter inom 15 minuter och börja streama.",
+      "successTitle": "Prenumeration aktiverad!",
+      "successDesc": "Dina uppgifter skickas till din WhatsApp inom 15 minuter.",
+      "listLabel": "Vad du kommer att få",
+      "items": [
+        { "title": "Användarnamn & Lösenord", "desc": "Inloggningsuppgifter för alla dina enheter" },
+        { "title": "Server-URL / M3U-länk", "desc": "Din personliga streaminglänk" },
+        { "title": "Installationsguide", "desc": "Steg-för-steg-instruktioner för din enhet" },
+        { "title": "24/7 Support", "desc": "Vi är här om du behöver hjälp" }
+      ],
+      "cta": "Kontakta Support"
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Vanliga frågor",
+    "subtitle": "Allt du behöver veta om vår IPTV-tjänst.",
+    "categories": {
+      "all": "Alla",
+      "general": "Allmänt",
+      "setup": "Installation",
+      "technical": "Tekniskt",
+      "devices": "Enheter",
+      "billing": "Betalning"
+    },
+    "items": [
+      { "id": 1, "cat": "general", "q": "Vad är IPTV och hur fungerar det?", "a": "IPTV levererar TV-kanaler och videoinnehåll via din internetanslutning istället för kabel eller satellit." },
+      { "id": 2, "cat": "general", "q": "Hur många kanaler får jag?", "a": "Du får tillgång till tusentals live-kanaler, filmer och serier." },
+      { "id": 3, "cat": "setup", "q": "Hur aktiverar jag min prenumeration?", "a": "Du får dina inloggningsuppgifter via WhatsApp eller e-post och kan börja titta direkt." },
+      { "id": 4, "cat": "technical", "q": "Varför buffrar min stream?", "a": "Oftast beror det på långsamt internet. Minst 25 Mbps rekommenderas för 4K-streaming." },
+      { "id": 5, "cat": "devices", "q": "Vilka enheter stöds?", "a": "Smart-TV, telefoner, surfplattor, PC och streaming-enheter som Firestick eller Apple TV." },
+      { "id": 6, "cat": "billing", "q": "Kan jag få en återbetalning?", "a": "Ja, vi erbjuder en 7-dagars pengarna-tillbaka-garanti om du inte är nöjd." }
+    ]
+  },
+  "contact": {
+    "badge": "Nyhetsbrev",
+    "title": "Håll dig uppdaterad",
+    "subtitle": "Gå med i vårt nyhetsbrev för de senaste kanaluppdateringarna och svenska marknadserbjudanden.",
+    "placeholder": "Ange din e-postadress...",
+    "button": "Prenumerera",
+    "status": {
+      "success": "Du har nu börjat prenumerera på uppdateringar!",
+      "error": "Det gick inte att prenumerera. Försök igen.",
+      "networkError": "Nätverksfel. Kontrollera att din backend körs."
+    }
+  },
+  "footer": {
+    "description": "Premium 4K-streaming för den nordiska marknaden. Pålitlig, snabb och buffertfri underhållning.",
+    "columns": {
+      "support": "Support",
+      "legal": "Juridiskt",
+      "office": "Kontor"
+    },
+    "links": {
+      "about": "Om oss",
+      "faq": "Vanliga frågor",
+      "contact": "Kontakta oss",
+      "privacy": "Integritetspolicy",
+      "terms": "Användarvillkor",
+      "refund": "Återbetalningspolicy"
+    },
+    "copyright": "© {{year}} SvenskStream. Alla rättigheter förbehållna."
   }
 }
