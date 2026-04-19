@@ -5,13 +5,13 @@ import sv from "../translations/sv.json";
 // ─── All translation bundles ───────────────────────────────────────────────
 const TRANSLATIONS = { en, sv };
 
-// ─── Read saved language from localStorage (default: "en") ────────────────
+// ─── Read saved language from localStorage (default: "sv") ────────────────
 const getSavedLang = () => {
   try {
     const saved = localStorage.getItem("ss_lang");
-    return saved && TRANSLATIONS[saved] ? saved : "en";
+    return saved && TRANSLATIONS[saved] ? saved : "sv";
   } catch {
-    return "en";
+    return "sv";
   }
 };
 
