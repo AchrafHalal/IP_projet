@@ -4,9 +4,28 @@ import { useLang } from '../../context/LanguageContext';
 import DarkMode from '../DarkMode/DarkMode';
 import './Navbar.css';
 
+// --- SVG Flag Components ---
+const FlagSV = () => (
+  <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: 'block', flexShrink: 0 }}>
+    <rect width="20" height="14" fill="#006AA7" />
+    <rect x="5.5" width="3" height="14" fill="#FECC02" />
+    <rect y="5.5" width="20" height="3" fill="#FECC02" />
+  </svg>
+);
+
+const FlagEN = () => (
+  <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ borderRadius: 2, display: 'block', flexShrink: 0 }}>
+    <rect width="20" height="14" fill="#012169" />
+    <path d="M0 0L20 14M20 0L0 14" stroke="white" strokeWidth="2.4" />
+    <path d="M0 0L20 14M20 0L0 14" stroke="#C8102E" strokeWidth="1.2" />
+    <path d="M10 0V14M0 7H20" stroke="white" strokeWidth="3.6" />
+    <path d="M10 0V14M0 7H20" stroke="#C8102E" strokeWidth="2" />
+  </svg>
+);
+
 const LANGUAGES = [
-  { code: "en", label: "English" },
-  { code: "sv", label: "Svenska" },
+  { code: "en", label: "English", flag: <FlagEN /> },
+  { code: "sv", label: "Svenska", flag: <FlagSV /> },
 ];
 
 // --- Sub-Component: Language Switcher ---
@@ -34,26 +53,38 @@ function LanguageSwitcher({ currentLang, onChange }) {
       <button
         className={`lang-trigger ${open ? "open" : ""}`}
         onClick={() => setOpen((v) => !v)}
+        style={{ display: 'flex', alignItems: 'center', padding: '4px 6px' }}
         aria-haspopup="listbox"
         aria-expanded={open}
       >
-        <span className="lang-text">{current.code.toUpperCase()}</span>
-        <svg className={`lang-chevron ${open ? "open" : ""}`} width="14" height="14" viewBox="0 0 12 12" fill="none">
+        {/* TOP LEVEL: Only show the Flag */}
+        {current.flag}
+        <svg className={`lang-chevron ${open ? "open" : ""}`} width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ marginLeft: '4px' }}>
           <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
       {open && (
-        <div className="lang-dropdown" role="listbox">
-          {LANGUAGES.map(({ code, label }) => (
+        <div className="lang-dropdown" role="listbox" style={{ minWidth: '140px' }}>
+          {LANGUAGES.map(({ code, label, flag }) => (
             <button
               key={code}
               className={`lang-option ${currentLang === code ? "active" : ""}`}
               onClick={() => handleSelect(code)}
               role="option"
               aria-selected={currentLang === code}
+              style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '10px', 
+                width: '100%', 
+                padding: '10px 12px',
+                textAlign: 'left' 
+              }}
             >
-              <span>{label}</span>
+              {/* DROPDOWN: Show both Flag and Label */}
+              {flag}
+              <span className="lang-label-text" style={{ fontSize: '14px' }}>{label}</span>
               {currentLang === code && <span className="lang-dot" />}
             </button>
           ))}
@@ -74,11 +105,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -105,41 +132,33 @@ export default function Navbar() {
     { name: t('navbar.links.faq'), target: "FAQ", isPage: false },
   ];
 
-  const WHATSAPP_LINK = "https://wa.me/your-number?text=Hi,%20I'm%20interested%20in%20the%201-month%20premium%20pass.";
+  const WHATSAPP_LINK = "https://wa.me/your-number";
 
   return (
     <div className={`navbar-wrapper ${isScrolled ? 'scrolled' : ''}`}>
       <nav className="navbar-container">
         <div className="navbar-content">
 
-          {/* 1. Logo */}
           <div className="navbar-logo">
             <a href="/#Hero" onClick={(e) => handleScrollToSection(e, 'Hero')}>
               SvenskStream<span className="logo-dot">.</span>
             </a>
           </div>
 
-          {/* 2. Desktop Links */}
           <ul className="navbar-links">
             {NAV_LINKS.map((link) => (
               <li key={link.name}>
-                {link.isPage ? (
-                  <a href={link.target}>
-                    {link.name}
-                  </a>
-                ) : (
-                  <a href={`/#${link.target}`} onClick={(e) => handleScrollToSection(e, link.target)}>
-                    {link.name}
-                  </a>
-                )}
+                <a 
+                  href={link.isPage ? link.target : `/#${link.target}`} 
+                  onClick={link.isPage ? undefined : (e) => handleScrollToSection(e, link.target)}
+                >
+                  {link.name}
+                </a>
               </li>
             ))}
           </ul>
 
-          {/* 3. Desktop Actions */}
           <div className="navbar-actions">
-            
-            {/* The new grouped Utility Pill */}
             <div className="utility-group">
               <LanguageSwitcher currentLang={lang} onChange={(selected) => changeLang(selected)} />
               <div className="utility-divider"></div>
@@ -151,32 +170,26 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* 4. Hamburger Icon */}
           <div className="menu-icon" onClick={toggleMobileMenu}>
             {click ? <FaTimes /> : <FaBars />}
           </div>
         </div>
       </nav>
 
-      {/* 5. Mobile Menu Overlay */}
       <div className={`mobile-menu ${click ? "active" : ""}`}>
         <ul className="mobile-links">
           {NAV_LINKS.map((link) => (
             <li key={link.name}>
-              {link.isPage ? (
-                <a href={link.target} onClick={closeMobileMenu}>
-                  {link.name}
-                </a>
-              ) : (
-                <a href={`/#${link.target}`} onClick={(e) => handleScrollToSection(e, link.target)}>
-                  {link.name}
-                </a>
-              )}
+              <a 
+                href={link.isPage ? link.target : `/#${link.target}`} 
+                onClick={link.isPage ? closeMobileMenu : (e) => handleScrollToSection(e, link.target)}
+              >
+                {link.name}
+              </a>
             </li>
           ))}
         </ul>
 
-        {/* Mobile Toggles */}
         <div className="mobile-lang-row">
           <div className="utility-group" style={{ margin: '0 auto' }}>
             <LanguageSwitcher currentLang={lang} onChange={(selected) => changeLang(selected)} />
