@@ -306,13 +306,20 @@
     font-weight: 600;
   }
 
+.lang-dropdown {
+    left: 0;   
+    right: auto;
+    top: calc(100% + 5px);
+  }
+  
   .mobile-lang-row {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 5px 0 20px 0;
-    border-bottom: 1px solid var(--border-color, #eaeaea);
-    margin-bottom: 20px;
+    justify-content: flex-start !important; 
+    padding-left: 5px; 
+  }
+
+  .utility-group {
+    margin: 0 !important; 
+    display: inline-flex;
   }
 
   .mobile-promo-box {
