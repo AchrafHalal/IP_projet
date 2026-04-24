@@ -191,7 +191,7 @@ export default function Navbar() {
         </ul>
 
         <div className="mobile-lang-row">
-          <div className="utility-group" style={{ margin: '0 auto' }}>
+          <div className="utility-group">
             <LanguageSwitcher currentLang={lang} onChange={(selected) => changeLang(selected)} />
             <div className="utility-divider"></div>
             <DarkMode />
