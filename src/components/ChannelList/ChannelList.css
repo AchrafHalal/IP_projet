@@ -1,4 +1,3 @@
-
 /* --- SECTION BASE --- */
 .cl-section {
   background: var(--bg-color);
@@ -155,11 +154,19 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+/* Fixed Icon and Text Alignment */
+.cl-vh-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .cl-vh-info h3 {
   margin: 0;
   font-size: 19px;
   font-weight: 800;
   color: var(--text-main);
+  line-height: 1.2;
 }
 
 .cl-vh-badge {
@@ -232,18 +239,80 @@
 @media (max-width: 850px) {
   .cl-player-wrapper {
     flex-direction: column;
-    height: auto;
-    max-height: 850px;
+    height: 650px; /* CRITICAL: Fixed height to allow inner vertical scroll */
+    max-height: 85vh; 
   }
 
   .cl-sidebar {
     width: 100%;
-    height: 320px;
+    height: auto; 
     border-right: none;
     border-bottom: 1px solid var(--border-color);
   }
 
-  .cl-title {
-    letter-spacing: -0.03em;
+  /* Horizontal scrollable ribbon for networks */
+  .cl-sidebar-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cl-sidebar-label {
+    display: none; 
+  }
+
+  .cl-sidebar-item {
+    flex-shrink: 0; 
+    width: auto;
+    padding: 14px 20px;
+    border-left: none; 
+    border-bottom: 3px solid transparent; 
+    gap: 12px; 
+  }
+
+  .cl-sidebar-item.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--primary);
+  }
+
+  /* Fixed Mobile Header Layout */
+  .cl-viewport-header {
+    padding: 16px 20px; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 12px; 
+  }
+
+  .cl-vh-info h3 {
+    font-size: 17px; 
+  }
+
+  .cl-vh-badge {
+    display: inline-block;
+    background: var(--bg-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    font-size: 12px;
+    white-space: nowrap; 
+  }
+
+  /* Restored Vertical Scrolling */
+  .cl-viewport {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; 
+  }
+
+  .cl-channel-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 30px; 
+    -webkit-overflow-scrolling: touch;
   }
 }

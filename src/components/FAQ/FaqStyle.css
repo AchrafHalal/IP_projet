@@ -48,13 +48,37 @@
 /* ── TABS ── */
 .faq-tabs {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap; /* CRITICAL: Prevents them from stacking to a second line */
+  justify-content: flex-start; /* Aligns them nicely to the left for scrolling */
   gap: 10px;
   margin-bottom: 30px;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: hidden;
+  padding-bottom: 12px; /* Gives room for the scrollbar and drop shadow */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Butter-smooth momentum scrolling on iOS */
+}
+
+/* Optional: Centers the tabs on desktop, but allows scrolling on mobile */
+@media (min-width: 768px) {
+  .faq-tabs {
+    justify-content: center;
+  }
+}
+
+/* Match the scrollbar style from ChannelList */
+.faq-tabs::-webkit-scrollbar {
+  height: 5px;
+}
+
+.faq-tabs::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
 }
 
 .faq-tab {
+  flex-shrink: 0; /* CRITICAL: Prevents the browser from squishing the buttons */
+  white-space: nowrap; /* Keeps the text on a single line */
   padding: 10px 20px;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
